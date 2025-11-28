@@ -1,9 +1,13 @@
-import Navbar from "./components/Navbar"
+import { Dock, Navbar, Welcome } from "./components"
+import { Draggable } from 'gsap/Draggable';
+// gsap.registerPlugin(Draggable);
 
 function App() {
   return (
     <main>
       <Navbar />
+      <Welcome />
+      <Dock />
     </main>
   )
 }
