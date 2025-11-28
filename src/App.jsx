@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import BootScreen from './components/BootScreen';
-import Navbar from './components/Navbar';
-import Dock from './components/Dock';
-import Welcome from './components/Welcome';
-// ... other imports if you have them
+import { Navbar, Dock, Welcome, BootScreen } from "./components";
+
+import { Terminal } from "./windows/index";
+import gsap from "gsap";
+import Draggable from 'gsap/Draggable';
+
+gsap.registerPlugin(Draggable);
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +36,7 @@ const App = () => {
           <Navbar />
           <Welcome />
           <Dock />
+          <Terminal />
           
           {/* ... Add your windows/other components here ... */}
           

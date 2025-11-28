@@ -69,18 +69,24 @@ const DockIcon = ({ mouseX, id, name, icon, canOpen = true, toggleApp }) => {
 
 const Dock = () => {
   const mouseX = useMotionValue(Infinity);
-  // Default to empty object if store is not ready
   const { openWindow, closeWindow, windows } = useWindowStore() || { windows: {} };
 
   const toggleApp = (app) => {
-    if (!app) return;
+    // 1. Safety Check: If app is null or canOpen is false, stop here.
+    if (!app || !app.canOpen) return;
     
-    // Debugging: This will show up in your console if the click works
-    console.log("Opening App:", app.id); 
+    // 2. Safety Check: Does this app actually exist in our Window Store?
+    // This prevents the "Trash" crash since 'trash' isn't in WINDOW_CONFIG
+    if (!windows[app.id]) {
+        console.warn(`No window config found for ID: ${app.id}`);
+        return;
+    }
+
+    console.log("Toggling App:", app.id); 
 
     const windowState = windows[app.id];
 
-    if (windowState?.isOpen) {
+    if (windowState.isOpen) {
         closeWindow(app.id);
     } else {
         openWindow(app.id);
