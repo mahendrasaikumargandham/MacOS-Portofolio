@@ -96,7 +96,7 @@ const Dock = () => {
   };
 
   return (
-    <section id="dock">
+    <section id="dock" className="z-[9999]">
       <motion.div
         className="dock-container"
         onMouseMove={(e) => mouseX.set(e.pageX)}
