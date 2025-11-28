@@ -1,34 +1,46 @@
-import { useState } from "react";
-import { Dock, Navbar, Welcome } from "./components"
-import { Draggable } from 'gsap/Draggable';
-import BootScreen from "./components/BootScreen";
-// gsap.registerPlugin(Draggable);
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import BootScreen from './components/BootScreen';
+import Navbar from './components/Navbar';
+import Dock from './components/Dock';
+import Welcome from './components/Welcome';
+// ... other imports if you have them
 
 const App = () => {
-
   const [isLoading, setIsLoading] = useState(true);
 
-  // 2. Logic to run when boot finishes
-  const handleBootComplete = () => {
-    setIsLoading(false);
-  };
-
   return (
-    <main>
-      {isLoading ? (
-        // 3. Show BootScreen if loading
-        <BootScreen onComplete={handleBootComplete} />
-      ) : (
-        // 4. Show your actual app content if loading is done
-        <>
+    <main className="relative w-full h-screen overflow-hidden">
+      
+      {/* 1. THE BOOT SCREEN (Top Layer) */}
+      {/* It sits on top because of z-index inside the component */}
+      {isLoading && <BootScreen onComplete={() => setIsLoading(false)} />}
+
+      {/* 2. THE DESKTOP (Bottom Layer) */}
+      {/* We render this immediately so it's ready to be revealed */}
+      <motion.div 
+        className="w-full h-full"
+        // Initial state: Slightly zoomed in (1.1) and invisible? 
+        // No, keep opacity 1 so the black overlay fades to reveal it.
+        initial={{ scale: 1.1, filter: "blur(10px)" }} 
+        animate={{ 
+          // When loading finishes, scale to normal and remove blur
+          scale: isLoading ? 1.1 : 1, 
+          filter: isLoading ? "blur(10px)" : "blur(0px)" 
+        }}
+        transition={{ duration: 0.5, ease: "easeOut" }} // Slow, smooth entry
+      >
+          {/* Your actual App Content */}
           <Navbar />
           <Welcome />
-          {/* ... Your other windows/components ... */}
           <Dock />
-        </>
-      )}
-    </main>
-  )
-}
+          
+          {/* ... Add your windows/other components here ... */}
+          
+      </motion.div>
 
-export default App
+    </main>
+  );
+};
+
+export default App;
