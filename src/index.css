@@ -13,8 +13,10 @@ body {
   background-position: center;
   padding: 0; 
   margin: 0;
-  /* Prevent scrolling on mobile for that "App" feel */
   touch-action: none; 
+  /* Force dark mode base */
+  background-color: #000;
+  color: #e0e0e0;
 }
 
 @theme {
@@ -48,7 +50,8 @@ body {
 
 @layer components {
   .icon {
-    @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
+    /* Dark mode hover state for toolbar icons */
+    @apply p-1 hover:bg-white/10 rounded hover:cursor-default transition-colors text-gray-300;
   }
 
   /* --- WELCOME SCREEN --- */
@@ -56,131 +59,123 @@ body {
     @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none z-0;
 
     .small-screen {
-      @apply hidden; /* Hiding the warning message since we support mobile */
+      @apply hidden;
     }
   }
 
   /* --- iOS / macOS HOME SCREEN ICONS --- */
   #home {
-    /* Desktop: Absolute positioning (Mac style) 
-       Mobile: 4-Column Grid (iOS style) */
-    @apply relative z-0 w-full h-full pt-16 px-4 max-sm:block;
+    @apply relative z-0 w-full h-full pt-8 px-4 max-sm:block;
 
     ul {
       @apply max-sm:grid max-sm:grid-cols-4 max-sm:gap-x-4 max-sm:gap-y-8 max-sm:w-full;
 
       li {
-        /* Desktop: Absolute placed icons */
-        @apply sm:absolute sm:z-0 sm:flex sm:items-center sm:flex-col;
-        
-        /* Mobile: Relative Grid Items */
-        @apply max-sm:relative max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-start;
+        @apply sm:absolute sm:z-0 sm:flex sm:flex-col sm:items-center sm:gap-1.5 cursor-pointer w-24;
+        @apply max-sm:relative max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-start max-sm:w-auto;
 
         img {
-          /* iOS App Icon Style */
-          @apply group-hover:bg-gray-950/10 p-1 rounded-2xl max-sm:size-16 max-sm:rounded-2xl max-sm:bg-transparent max-sm:shadow-sm;
+          @apply w-14 h-14 object-contain drop-shadow-md;
+          @apply max-sm:size-16 max-sm:rounded-2xl max-sm:bg-transparent max-sm:shadow-sm;
         }
 
         p {
-          /* App Labels */
-          @apply text-sm text-white text-center px-1 rounded-md sm:group-hover:bg-blue-500 transition-colors max-w-40 max-sm:text-xs max-sm:mt-1 max-sm:font-medium max-sm:drop-shadow-md;
+          @apply text-[11px] font-bold text-white text-center leading-[1.2] tracking-wide 
+                 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
+                 px-1.5 py-0.5 rounded-[4px]
+                 break-words w-full;
+          
+          /* Dark Mode Selection Blue */
+          @apply sm:group-hover:bg-[#0A84FF] sm:group-hover:text-white;
+
+          @apply max-sm:text-xs max-sm:mt-1 max-sm:font-medium max-sm:drop-shadow-md max-sm:group-hover:bg-transparent;
         }
       }
     }
   }
 
-  /* --- DOCK STYLES (Responsive) --- */
+  /* --- DOCK STYLES (Dark Glass) --- */
   #dock {
     @apply fixed bottom-4 left-0 w-full flex justify-center z-[9999] select-none;
 
     .dock-container {
-      /* DESKTOP: h-14 (56px) for sleek look.
-         MOBILE: h-20 for touch accessibility. */
-      @apply h-14 max-sm:h-20 bg-white/20 backdrop-blur-md border border-white/10 rounded-2xl px-3 flex items-end gap-3 overflow-visible max-sm:w-[90%] max-sm:justify-between max-sm:px-4 max-sm:pb-4;
+      /* Dark translucent background */
+      @apply h-14 max-sm:h-20 bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl px-3 flex items-end gap-3 overflow-visible max-sm:w-[90%] max-sm:justify-between max-sm:px-4 max-sm:pb-4 shadow-2xl;
     }
 
     .dock-tooltip {
-      @apply !py-1 !px-3 !w-fit !text-center !text-xs !rounded-md !bg-gray-800 !text-white !shadow-2xl z-50 max-sm:hidden;
+      @apply !py-1 !px-3 !w-fit !text-center !text-xs !rounded-md !bg-[#2d2d2d] !text-white !border !border-white/10 !shadow-xl z-50 max-sm:hidden;
     }
 
     .dock-icon {
       @apply cursor-pointer w-full h-full;
-
-      img {
-        @apply object-cover object-center w-full h-full;
-      }
+      img { @apply object-cover object-center w-full h-full; }
     }
   }
 
-  /* --- WINDOW CONTROLS (Mac Traffic Lights) --- */
+  /* --- WINDOW CONTROLS --- */
   #window-controls {
-    /* Hide traffic lights on mobile (Apps are full screen) */
     @apply flex gap-2 max-sm:hidden;
-
-    .close { @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer; }
-    .minimize { @apply size-3.5 rounded-full bg-[#ffc030]; }
-    .maximize { @apply size-3.5 rounded-full bg-[#2acb42]; }
+    .close { @apply size-3.5 rounded-full bg-[#ff5f57] border border-black/10 cursor-pointer; }
+    .minimize { @apply size-3.5 rounded-full bg-[#febc2e] border border-black/10; }
+    .maximize { @apply size-3.5 rounded-full bg-[#28c840] border border-black/10; }
   }
 
-  /* Header hidden on mobile apps usually, or adapted */
+  /* --- WINDOW HEADER (Dark Theme) --- */
   #window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400 max-sm:hidden;
+    /* #2d2d2d is standard Mac Dark Title Bar */
+    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-[#2d2d2d] border-b border-black/50 select-none text-sm text-[#a1a1a1] max-sm:hidden shadow-sm;
   }
 
-  /* --- APPS / WINDOWS SCALING --- */
-  /* Logic: On Mobile (max-sm), force windows to be fixed, full screen, z-40 */
+  /* --- APPS / WINDOWS SCALING (Dark Theme Updates) --- */
 
   #safari {
-    /* Desktop Width: 60rem (~960px) */
-    @apply w-[60rem] absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40;
+    /* Main Background: #1e1e1e */
+    @apply w-[60rem] absolute top-40 left-2/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[#e0e0e0];
 
     .search {
-      @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2 max-sm:w-full;
-
-      input { @apply placeholder:text-gray-400 w-full; }
+      /* Dark Input Field */
+      @apply flex items-center gap-3 w-2/3 bg-[#3a3a3a] border border-[#555] rounded-lg px-3 py-2 max-sm:w-full shadow-inner;
+      input { @apply placeholder:text-[#888] w-full bg-transparent text-white outline-none; }
     }
 
     .blog {
-      @apply bg-white p-10 max-w-3xl mx-auto max-sm:p-4;
-
-      h2 { @apply text-xl font-bold text-pink-600 mb-10; }
-
+      @apply bg-[#1e1e1e] p-10 max-w-3xl mx-auto max-sm:p-4;
+      h2 { @apply text-xl font-bold text-pink-500 mb-10; }
       .blog-post {
         @apply grid grid-cols-12 space-x-5 max-sm:flex max-sm:flex-col max-sm:space-x-0 max-sm:gap-4;
-
         img { @apply size-full rounded-md object-cover max-sm:h-48; }
-
         .content {
           @apply col-span-10 space-y-3;
-          p { @apply text-xs text-gray-500; }
-          h3 { @apply font-semibold text-base text-gray-800; }
-          a { @apply text-blue-600 text-xs hover:underline flex items-center gap-3; }
+          p { @apply text-xs text-[#a1a1a1]; }
+          h3 { @apply font-semibold text-base text-[#e0e0e0]; }
+          a { @apply text-[#4daafc] text-xs hover:underline flex items-center gap-3; }
         }
       }
     }
   }
 
   #terminal {
-    /* Desktop Width: 36rem */
-    @apply w-[36rem] absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40;
+    /* Dark Terminal Background with Blur */
+    @apply w-[36rem] absolute top-32 left-1/12 bg-[#1e1e1e]/95 backdrop-blur-md shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 border border-white/10;
 
-    h2 { @apply font-bold text-sm text-center w-full; }
+    h2 { @apply font-bold text-sm text-center w-full text-[#a1a1a1]; }
 
     .techstack {
-      @apply text-sm font-roboto p-5;
-      .label { @apply flex items-center ms-10 mt-7 max-sm:ms-0; }
+      @apply text-sm font-roboto p-5 text-[#e0e0e0];
+      .label { @apply flex items-center ms-10 mt-7 max-sm:ms-0 text-[#a1a1a1]; }
       .content {
-        @apply py-5 my-5 border-y border-dashed space-y-1;
+        @apply py-5 my-5 border-y border-dashed border-[#444] space-y-1;
         li {
-          .check { @apply text-[#00A154] w-5; }
-          h3 { @apply font-semibold text-[#00A154] w-32 ms-5; }
+          .check { @apply text-[#28c840] w-5; }
+          h3 { @apply font-semibold text-[#28c840] w-32 ms-5; }
           ul { @apply flex items-center gap-3 max-sm:flex-wrap; }
         }
       }
       .footnote {
-        @apply text-[#00A154] space-y-1;
+        @apply text-[#28c840] space-y-1;
         p { 
           @apply flex items-center; 
           svg { @apply w-5 me-5; }
@@ -190,18 +185,17 @@ body {
   }
 
   #contact {
-    /* Desktop Width: 40rem */
-    @apply w-[40rem] absolute top-60 left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40;
+    @apply w-[40rem] absolute top-60 left-5/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[#e0e0e0];
 
     h2 { @apply font-bold text-sm text-center w-full; }
     h3 { @apply text-xl font-semibold; }
 
     ul {
       @apply flex items-center gap-3 max-sm:flex-col max-sm:gap-6 max-sm:mt-10;
-
       li {
-        @apply rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300 max-sm:w-full;
+        /* Dark Cards */
+        @apply rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300 max-sm:w-full bg-[#2d2d2d] border border-white/5 shadow-lg;
         a { @apply space-y-5; }
         p { @apply font-semibold text-sm text-white; }
       }
@@ -209,23 +203,23 @@ body {
   }
 
   #photos {
-    /* Desktop Width: 50rem */
-    @apply w-[50rem] absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:translate-x-0 max-sm:translate-y-0 max-sm:left-0 max-sm:top-0 max-sm:z-40;
+    @apply w-[50rem] absolute top-96 left-1/2 -translate-y-1/2 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:translate-x-0 max-sm:translate-y-0 max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[#e0e0e0];
 
-    /* Make Photo Gallery Stack vertically on mobile */
     @apply max-sm:flex max-sm:flex-col;
 
     .sidebar {
-      @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5
+      /* Sidebar: #2d2d2d with Blur */
+      @apply w-3/12 flex-none bg-[#2d2d2d]/95 backdrop-blur-xl border-r border-black/50 flex flex-col p-5
              max-sm:w-full max-sm:h-auto max-sm:border-r-0 max-sm:border-b;
 
-      h2 { @apply text-xs font-medium text-gray-400 mb-1; }
+      h2 { @apply text-xs font-medium text-[#888] mb-1; }
       ul {
         @apply max-sm:flex max-sm:gap-4 max-sm:overflow-x-auto;
         li {
-          @apply flex space-y-1 items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors;
-          &:first-child { @apply bg-blue-100 text-blue-700; }
+          @apply flex space-y-1 items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors hover:bg-white/10;
+          /* Active Item: macOS Blue */
+          &:first-child { @apply bg-[#0A84FF] text-white; }
           img { @apply w-4; }
           p { @apply text-sm font-medium; }
         }
@@ -233,19 +227,12 @@ body {
     }
 
     .gallery {
-      @apply p-5 max-sm:flex-1 max-sm:overflow-y-auto;
-
+      @apply p-5 max-sm:flex-1 max-sm:overflow-y-auto bg-[#1e1e1e];
       ul {
         @apply grid grid-cols-5 grid-rows-5 gap-2.5 max-sm:grid-cols-2 max-sm:grid-rows-none max-sm:auto-rows-fr;
-
         li {
-          img { @apply size-full object-cover rounded-lg; }
-          
-          /* Reset grid spans for mobile to make it a simple 2-col grid */
-          &:first-child, &:nth-child(2), &:nth-child(3), &:last-child {
-            @apply max-sm:row-span-1 max-sm:col-span-1;
-          }
-          /* Keep desktop layout spans */
+          img { @apply size-full object-cover rounded-lg border border-white/10; }
+          &:first-child, &:nth-child(2), &:nth-child(3), &:last-child { @apply max-sm:row-span-1 max-sm:col-span-1; }
           &:first-child { @apply sm:row-start-1 sm:row-span-3 sm:col-start-1 sm:col-span-3; }
           &:nth-child(2) { @apply sm:row-start-1 sm:row-span-3 sm:col-start-4 sm:col-span-2; }
           &:nth-child(3) { @apply sm:row-start-4 sm:row-span-2 sm:col-start-3 sm:col-span-3; }
@@ -256,52 +243,46 @@ body {
   }
 
   #resume {
-    /* Desktop Width: 600px, Height: 80vh */
-    @apply w-[600px] h-[80vh] absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40;
+    @apply w-[600px] h-[80vh] absolute top-16 left-7/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[#e0e0e0];
     
     #window-header h2 { @apply font-bold text-sm text-center flex-1; }
   }
 
   #finder {
-    /* Desktop Width: 48rem, Height: 30rem */
-    @apply w-[48rem] h-[30rem] absolute left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl bg-white
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40;
+    @apply w-[48rem] h-[30rem] absolute left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl bg-[#1e1e1e]
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[#e0e0e0];
     
     @apply max-sm:flex max-sm:flex-col;
 
     .sidebar {
-      @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3
+      @apply w-48 bg-[#2d2d2d]/95 backdrop-blur-xl border-r border-black/50 flex flex-col p-5 space-y-3
              max-sm:w-full max-sm:h-auto max-sm:flex-row max-sm:overflow-x-auto max-sm:border-r-0 max-sm:border-b;
       
-      h3 { @apply text-xs font-medium text-gray-400 mb-1 max-sm:hidden; }
+      h3 { @apply text-xs font-medium text-[#888] mb-1 max-sm:hidden; }
       ul {
         @apply space-y-1 max-sm:flex max-sm:space-y-0 max-sm:gap-2;
-        .active { @apply bg-blue-100 text-blue-700; }
-        .not-active { @apply text-gray-700 hover:bg-gray-200; }
+        /* Active Item: macOS Blue */
+        .active { @apply bg-[#0A84FF] text-white; }
+        .not-active { @apply text-[#cccccc] hover:bg-white/10; }
         li { @apply flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors; }
       }
     }
 
     .content {
-      @apply flex-1 p-8 bg-white max-w-2xl relative max-sm:w-full;
+      @apply flex-1 p-8 bg-[#1e1e1e] max-w-2xl relative max-sm:w-full;
       li {
-        /* Mobile: Grid instead of absolute positioning inside Finder */
         @apply absolute flex items-center flex-col gap-3 max-sm:relative; 
         img { @apply object-contain object-center size-16 relative group-hover:scale-105; }
-        p { @apply text-sm text-center font-medium w-40; }
+        p { @apply text-sm text-center font-medium w-40 text-[#e0e0e0]; }
       }
-      /* Override absolute list items for mobile finder content */
-      & > ul {
-        @apply max-sm:grid max-sm:grid-cols-3 max-sm:gap-4;
-      }
+      & > ul { @apply max-sm:grid max-sm:grid-cols-3 max-sm:gap-4; }
     }
   }
 
   #txtfile, #imgfile {
-    /* Desktop Width: 30rem */
-    @apply w-[30rem] absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40;
+    @apply w-[30rem] absolute top-36 right-32 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[#e0e0e0];
 
     h2 { @apply font-bold text-sm text-center w-full; }
   }
