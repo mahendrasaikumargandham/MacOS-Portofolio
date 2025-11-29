@@ -484,29 +484,32 @@ const EXPERIENCE_LOCATION = {
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Associate Software Engineer | 2024 - Present",
-            "• Spearheaded the migration of legacy codebases to React 18, improving performance by 40%.",
-            "• Mentored a team of 5 junior developers, conducting code reviews and architectural planning.",
-            "• Implemented a comprehensive design system using Storybook and Tailwind CSS."
-          ]
+                "Associate Software Engineer | Aug 2024 - Present",
+                "• Led customization of enterprise modules with Hexagon EAM, boosting efficiency and performance by 40%.",
+                "• Optimized SDLC using Azure DevOps for version control, CI/CD, and agile tracking.",
+                "• Supported SAFe alignment in 2+ PI sessions, managing cross-team dependencies.",
+                "• Awarded 'Best Performer' in first 3 months for adaptability and early delivery.",
+                "• Collaborated in Agile teams to resolve issues and improve system performance.",
+                "• Upheld enterprise standards through testing and peer reviews."
+            ]
         },
         {
           id: 502,
-          name: "Team_Outing.png",
+          name: "Party-night.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-5 left-40",
-          imageUrl: "/images/team-outing.jpg"
+          imageUrl: "/images/party.jpeg"
         },
-        {
-          id: 503,
-          name: "Offer_Letter.pdf", 
-          icon: "/images/pdf.png",
-          kind: "file",
-          fileType: "pdf",
-          position: "top-32 left-10"
-        }
+        // {
+        //   id: 503,
+        //   name: "Offer_Letter.pdf", 
+        //   icon: "/images/pdf.png",
+        //   kind: "file",
+        //   fileType: "pdf",
+        //   position: "top-32 left-10"
+        // }
       ]
     },
     // Sub-folder 2: Another Company / Internship
