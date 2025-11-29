@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Navbar, Dock, Welcome, BootScreen } from "./components";
-
-import { Terminal, Safari } from "./windows";
+import { Terminal, Safari, Resume, Finder, Text, Image, Contact } from "./windows";
 import gsap from "gsap";
 import Draggable from 'gsap/Draggable';
 
@@ -30,7 +29,11 @@ const App = () => {
           <Dock />
           <Terminal />
           <Safari />
-          
+          <Resume />
+          <Finder />
+          <Text />
+          <Image />
+          <Contact />
       </motion.div>
 
     </main>
