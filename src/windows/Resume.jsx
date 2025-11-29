@@ -7,7 +7,7 @@ import "react-pdf/dist/Page/TextLayer.css";
 import { Document, Page, pdfjs } from 'react-pdf';
 
 // Fix worker setup for Vite
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const Resume = () => {
   return (
