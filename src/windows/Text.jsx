@@ -25,7 +25,7 @@ const Text = () => {
         </div>
 
         {/* Added overflow-y-auto so you can scroll long text */}
-        <div className='p-5 space-y-6 bg-white flex-1 overflow-y-auto'>
+        <div className='p-5 space-y-6 bg-1e1e1e flex-1 overflow-y-auto'>
             {image ? (
                 <div className='w-full'>
                     <img src={image} alt={name} className='w-full h-auto rounded' />
@@ -35,7 +35,7 @@ const Text = () => {
             {subtitle ? <h3 className='text-lg font-semibold'>{subtitle}</h3> : null}
 
             {Array.isArray(description) && description.length > 0 ? (
-                <div className='space-y-3 leading-relaxed text-base text-gray-800'>
+                <div className='space-y-3 leading-relaxed text-base text-999-800'>
                     {description.map((para, idx) => (
                         <p key={idx}>{para}</p>
                     ))}
