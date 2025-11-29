@@ -131,28 +131,28 @@ const socials = [
     id: 1,
     text: "Github",
     icon: "/icons/github.svg",
-    bg: "#f4656b",
+    bg: "#000000",
     link: "https://github.com/mahendrasaikumargandham",
   },
   {
     id: 2,
     text: "LeetCode",
-    icon: "/icons/leetcode.png",
-    bg: "#4bcb63",
+    icon: "/icons/leetcode.svg",
+    bg: "#FFA116",
     link: "https://leetcode.com/mahendra4919",
   },
   {
     id: 3,
-    text: "Twitter/X",
-    icon: "/icons/twitter.svg",
-    bg: "#ff866b",
-    link: "https://x.com/mahendra_4919",
+    text: "YouTube",
+    icon: "/icons/youtube-outlined.svg",
+    bg: "#FF0000",
+    link: "https://www.youtube.com/@mahendra4919",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
-    bg: "#05b6f6",
+    bg: "#0077B5",
     link: "https://www.linkedin.com/in/mahendragandham",
   },
 ];
@@ -280,7 +280,7 @@ const WORK_LOCATION = {
     // ▶ Project 2
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "Git Commit Optimizer using RAG",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -333,7 +333,7 @@ const WORK_LOCATION = {
     // ▶ Project 3
     {
       id: 7,
-      name: "Food Delivery App",
+      name: "Rubix Rampage - Story based Game",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",

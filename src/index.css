@@ -7,7 +7,11 @@ body {
   width: 100dvw;
   overflow: hidden;
   height: 100dvh;
-  background-image: url("/images/wallpaper.png");
+
+  /* --- DARKENED WALLPAPER --- */
+  /* We add a black gradient layer with 0.3 (30%) opacity on top of the image */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/images/wallpaper.jpg");
+  
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
