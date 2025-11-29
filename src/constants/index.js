@@ -5,12 +5,17 @@ const navLinks = [
     type: "finder",
   },
   {
-    id: 3,
+    id: 4,
+    name: "Experience",
+    type: "experience",
+  },
+  {
+    id: 2,
     name: "Contact",
     type: "contact",
   },
   {
-    id: 4,
+    id: 3,
     name: "Resume",
     type: "resume",
   },
@@ -38,37 +43,37 @@ const navIcons = [
 const dockApps = [
   {
     id: "finder",
-    name: "Portfolio", // was "Finder"
+    name: "Portfolio",
     icon: "finder.png",
     canOpen: true,
   },
   {
     id: "safari",
-    name: "Articles", // was "Safari"
+    name: "Articles",
     icon: "safari.png",
     canOpen: true,
   },
   {
     id: "photos",
-    name: "Gallery", // was "Photos"
+    name: "Gallery",
     icon: "photos.png",
     canOpen: true,
   },
   {
     id: "contact",
-    name: "Contact", // or "Get in touch"
+    name: "Contact",
     icon: "contact.png",
     canOpen: true,
   },
   {
     id: "terminal",
-    name: "Skills", // was "Terminal"
+    name: "Skills",
     icon: "terminal.png",
     canOpen: true,
   },
   {
     id: "trash",
-    name: "Archive", // was "Trash"
+    name: "Archive",
     icon: "trash.png",
     canOpen: true,
   },
@@ -215,6 +220,16 @@ export {
   gallery,
 };
 
+// --- FILE SYSTEM DATA ---
+// IDs are structured to be unique:
+// 100 series -> Work folders
+// 1000 series -> Work items
+// 200 series -> About items
+// 300 series -> Resume items
+// 400 series -> Trash items
+// 500 series -> Experience folders
+// 5000 series -> Experience items
+
 const WORK_LOCATION = {
   id: 1,
   type: "work",
@@ -224,15 +239,15 @@ const WORK_LOCATION = {
   children: [
     // ▶ Project 1
     {
-      id: 5,
+      id: 10,
       name: "TDM Multiplayer",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-10 left-5", // icon position inside Finder
-      windowPosition: "top-[5vh] left-5", // optional: Finder window position
+      position: "top-10 left-5",
+      windowPosition: "top-[5vh] left-5",
       children: [
         {
-          id: 1,
+          id: 101,
           name: "TDM Multiplayer.txt",
           icon: "/images/txt.png",
           kind: "file",
@@ -248,7 +263,7 @@ const WORK_LOCATION = {
           ],
         },
         {
-          id: 2,
+          id: 102,
           name: "gameplay-video.com",
           icon: "/images/safari.png",
           kind: "file",
@@ -257,7 +272,7 @@ const WORK_LOCATION = {
           position: "top-10 right-20",
         },
         {
-          id: 4,
+          id: 103,
           name: "main-menu.png",
           icon: "/images/image.png",
           kind: "file",
@@ -265,29 +280,20 @@ const WORK_LOCATION = {
           position: "top-52 right-80",
           imageUrl: "/images/main-menu.png",
         },
-        {
-          id: 5,
-          name: "nike.png",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "img",
-          href: "https://google.com",
-          position: "top-60 right-20",
-        },
       ],
     },
 
     // ▶ Project 2
     {
-      id: 6,
-      name: "Git Commit Optimizer using RAG",
+      id: 11,
+      name: "Git Commit Optimizer",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
       windowPosition: "top-[20vh] left-7",
       children: [
         {
-          id: 1,
+          id: 111,
           name: "AI Resume Analyzer Project.txt",
           icon: "/images/txt.png",
           kind: "file",
@@ -301,7 +307,7 @@ const WORK_LOCATION = {
           ],
         },
         {
-          id: 2,
+          id: 112,
           name: "ai-resume-analyzer.com",
           icon: "/images/safari.png",
           kind: "file",
@@ -310,7 +316,7 @@ const WORK_LOCATION = {
           position: "top-20 left-20",
         },
         {
-          id: 4,
+          id: 113,
           name: "ai-resume-analyzer.png",
           icon: "/images/image.png",
           kind: "file",
@@ -319,7 +325,7 @@ const WORK_LOCATION = {
           imageUrl: "/images/project-2.png",
         },
         {
-          id: 5,
+          id: 114,
           name: "Design.fig",
           icon: "/images/plain.png",
           kind: "file",
@@ -332,15 +338,15 @@ const WORK_LOCATION = {
 
     // ▶ Project 3
     {
-      id: 7,
-      name: "Rubix Rampage - Story based Game",
+      id: 12,
+      name: "Rubix Rampage",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
       windowPosition: "top-[33vh] left-7",
       children: [
         {
-          id: 1,
+          id: 121,
           name: "Food Delivery App Project.txt",
           icon: "/images/txt.png",
           kind: "file",
@@ -354,7 +360,7 @@ const WORK_LOCATION = {
           ],
         },
         {
-          id: 2,
+          id: 122,
           name: "food-delivery-app.com",
           icon: "/images/safari.png",
           kind: "file",
@@ -363,7 +369,7 @@ const WORK_LOCATION = {
           position: "top-10 right-20",
         },
         {
-          id: 4,
+          id: 123,
           name: "food-delivery-app.png",
           icon: "/images/image.png",
           kind: "file",
@@ -372,7 +378,7 @@ const WORK_LOCATION = {
           imageUrl: "/images/project-3.png",
         },
         {
-          id: 5,
+          id: 124,
           name: "Design.fig",
           icon: "/images/plain.png",
           kind: "file",
@@ -393,7 +399,7 @@ const ABOUT_LOCATION = {
   kind: "folder",
   children: [
     {
-      id: 1,
+      id: 201,
       name: "me.png",
       icon: "/images/image.png",
       kind: "file",
@@ -402,7 +408,7 @@ const ABOUT_LOCATION = {
       imageUrl: "/images/adrian.jpg",
     },
     {
-      id: 2,
+      id: 202,
       name: "casual-me.png",
       icon: "/images/image.png",
       kind: "file",
@@ -411,7 +417,7 @@ const ABOUT_LOCATION = {
       imageUrl: "/images/adrian-2.jpg",
     },
     {
-      id: 3,
+      id: 203,
       name: "conference-me.png",
       icon: "/images/image.png",
       kind: "file",
@@ -420,7 +426,7 @@ const ABOUT_LOCATION = {
       imageUrl: "/images/adrian-3.jpeg",
     },
     {
-      id: 4,
+      id: 204,
       name: "about-me.txt",
       icon: "/images/txt.png",
       kind: "file",
@@ -446,14 +452,96 @@ const RESUME_LOCATION = {
   kind: "folder",
   children: [
     {
-      id: 1,
+      id: 301,
       name: "Resume.pdf",
       icon: "/images/pdf.png",
       kind: "file",
       fileType: "pdf",
-      // you can add `href` if you want to open a hosted resume
-      // href: "/your/resume/path.pdf",
     },
+  ],
+};
+
+const EXPERIENCE_LOCATION = {
+  id: 5,
+  type: "experience",
+  name: "Experience",
+  icon: "/icons/work.svg", // Using Briefcase/Work icon
+  kind: "folder",
+  children: [
+    // Sub-folder 1: Previous Company
+    {
+      id: 50,
+      name: "Accenture",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-10 left-10",
+      children: [
+        {
+          id: 501,
+          name: "Role & Responsibilities.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "Associate Software Engineer | 2024 - Present",
+            "• Spearheaded the migration of legacy codebases to React 18, improving performance by 40%.",
+            "• Mentored a team of 5 junior developers, conducting code reviews and architectural planning.",
+            "• Implemented a comprehensive design system using Storybook and Tailwind CSS."
+          ]
+        },
+        {
+          id: 502,
+          name: "Team_Outing.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-5 left-40",
+          imageUrl: "/images/team-outing.jpg"
+        },
+        {
+          id: 503,
+          name: "Offer_Letter.pdf", 
+          icon: "/images/pdf.png",
+          kind: "file",
+          fileType: "pdf",
+          position: "top-32 left-10"
+        }
+      ]
+    },
+    // Sub-folder 2: Another Company / Internship
+    {
+      id: 51,
+      name: "Kanine Klans",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-10 left-48",
+      children: [
+        {
+          id: 511,
+          name: "Internship Details.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "Full Stack Intern | 2021 - 2022",
+            "• Built RESTful APIs using Node.js and Express for a high-traffic e-commerce platform.",
+            "• Integrated Stripe payment gateway and managed secure webhooks.",
+            "• Optimized MongoDB aggregation pipelines for faster data retrieval."
+          ]
+        },
+        {
+          id: 512,
+          name: "Launch_Day.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-5 left-40",
+          imageUrl: "/images/launch-day.jpg"
+        }
+      ]
+    }
   ],
 };
 
@@ -465,7 +553,7 @@ const TRASH_LOCATION = {
   kind: "folder",
   children: [
     {
-      id: 1,
+      id: 401,
       name: "trash1.png",
       icon: "/images/image.png",
       kind: "file",
@@ -474,7 +562,7 @@ const TRASH_LOCATION = {
       imageUrl: "/images/trash-1.png",
     },
     {
-      id: 2,
+      id: 402,
       name: "trash2.png",
       icon: "/images/image.png",
       kind: "file",
@@ -489,6 +577,7 @@ export const locations = {
   work: WORK_LOCATION,
   about: ABOUT_LOCATION,
   resume: RESUME_LOCATION,
+  experience: EXPERIENCE_LOCATION,
   trash: TRASH_LOCATION,
 };
 
@@ -503,7 +592,7 @@ const WINDOW_CONFIG = {
   terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  trash: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null }, 
+  trash: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

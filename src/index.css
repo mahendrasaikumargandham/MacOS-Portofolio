@@ -21,6 +21,33 @@ body {
   color: #e0e0e0;
 }
 
+/* --- CUSTOM DARK SCROLLBAR (Added Back) --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  border: 2px solid transparent; 
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
 @theme {
   --font-georama: "Georama", sans-serif;
   --font-roboto: "Roboto Mono", monospace;
@@ -66,44 +93,37 @@ body {
 
   /* --- iOS / macOS HOME SCREEN ICONS (FIXED) --- */
   #home {
-    @apply relative z-0 w-full h-full pt-10 px-5 max-sm:block;
+    @apply relative z-0 w-full h-full pt-10 px-4 max-sm:block;
 
     ul {
-      /* MOBILE: Grid Layout */
+      /* MOBILE: Standard Grid */
       @apply max-sm:grid max-sm:grid-cols-4 max-sm:gap-x-4 max-sm:gap-y-8 max-sm:w-full;
 
-      /* DESKTOP: Auto-Arranging Column Layout 
-         - flex-col + flex-wrap: Stacks items down, then moves to next column (Mac behavior)
-         - h-[calc...]: Limits height so icons wrap before hitting the Dock area
-         - gap-y-6: Adds breathing room between folders
+      /* DESKTOP: GRID with COLUMN FLOW 
+         This fixes the overlapping issue by allocating specific slots.
       */
-      @apply sm:flex sm:flex-col sm:flex-wrap sm:content-start sm:gap-y-6 sm:gap-x-4 sm:h-[calc(100vh-10rem)];
+      @apply sm:grid sm:grid-flow-col sm:grid-rows-[repeat(auto-fill,7.5rem)] 
+             sm:content-start sm:gap-x-2 sm:gap-y-0 
+             sm:h-[calc(100vh-8rem)] sm:w-fit;
 
       li {
-        /* DESKTOP: Authentic Mac Folder Styling 
-           - !top-auto: overrides manual positions to force auto-grid
-           - w-[5.5rem]: constraints width for text wrapping
-        */
         @apply sm:relative sm:!top-auto sm:!left-auto sm:!right-auto sm:!bottom-auto 
-               sm:z-0 sm:flex sm:flex-col sm:items-center sm:gap-1 cursor-pointer w-[5.5rem];
+               sm:z-0 sm:flex sm:flex-col sm:items-center sm:justify-start 
+               sm:gap-1 cursor-pointer sm:w-[5.5rem] sm:p-1;
         
-        /* Mobile Styles */
         @apply max-sm:relative max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-start max-sm:w-auto;
 
         img {
-          /* Mac Folder Size: 56px (w-14) */
           @apply w-14 h-14 object-contain drop-shadow-md;
           @apply max-sm:size-16 max-sm:rounded-2xl max-sm:bg-transparent max-sm:shadow-sm;
         }
 
         p {
-          /* Mac Font Styling: 11px, Bold, Shadowed */
           @apply text-[11px] font-bold text-white text-center leading-tight tracking-wide 
                  drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]
                  px-1.5 py-0.5 rounded-[4px]
-                 break-words w-full;
+                 break-words w-full line-clamp-2;
           
-          /* Selection Highlight (Mac Blue) */
           @apply sm:group-hover:bg-[#0061D5] sm:group-hover:text-white;
 
           @apply max-sm:text-xs max-sm:mt-1 max-sm:font-medium max-sm:drop-shadow-md max-sm:group-hover:bg-transparent;
@@ -112,13 +132,11 @@ body {
     }
   }
 
-  /* --- DOCK STYLES (FIXED ZOOM) --- */
+  /* --- DOCK STYLES --- */
   #dock {
     @apply fixed bottom-4 left-0 w-full flex justify-center z-[9999] select-none;
 
     .dock-container {
-      /* LOCK HEIGHT: min-h and max-h enforce rigid height (56px) 
-         so only icons scale, not the glass bar. */
       @apply h-14 min-h-[3.5rem] max-h-[3.5rem] max-sm:h-20 max-sm:min-h-[5rem] max-sm:max-h-[5rem]
              bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl 
              px-3 flex items-end gap-3 overflow-visible 
