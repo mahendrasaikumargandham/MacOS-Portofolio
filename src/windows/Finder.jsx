@@ -76,7 +76,7 @@ const Finder = () => {
                             onClick={() => openItem(item)}
                         >
                             <img src={item.icon} alt={item.name} className='w-14 h-14 object-contain drop-shadow-md' />
-                            <p className='text-sm text-center font-medium w-32 break-words leading-tight px-1 rounded bg-transparent group-hover:bg-[#0A84FF] group-hover:text-white'>
+                            <p className='text-sm text-center font-medium w-32 break-words leading-tight px-1 rounded bg-transparent'>
                                 {item.name}
                             </p>
                         </li>

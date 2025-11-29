@@ -186,7 +186,7 @@ body {
           @apply col-span-10 space-y-3;
           p { @apply text-xs text-[#a1a1a1]; }
           h3 { @apply font-semibold text-base text-[#e0e0e0]; }
-          a { @apply text-[#4daafc] text-xs hover:underline flex items-center gap-3; }
+          /* a { @apply text-[#4daafc] text-xs hover:underline flex items-center gap-3; } */
         }
       }
     }
