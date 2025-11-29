@@ -6,8 +6,11 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { dockApps } from "../constants/index";
+// Added 'locations' import to access the Trash folder data
+import { dockApps, locations } from "../constants/index";
 import useWindowStore from "../store/window";
+// Added Location Store import
+import useLocationStore from "../store/location";
 
 const CONFIG = {
   baseWidth: 45,
@@ -39,18 +42,16 @@ const DockIcon = ({ mouseX, id, name, icon, canOpen = true, toggleApp }) => {
     <motion.div
       ref={ref}
       style={{ width }}
-      className="aspect-square flex items-end mb-2 z-10" // Added z-10 to ensure it sits on top
+      className="aspect-square flex items-end mb-2 z-10"
     >
       <button
         type="button"
-        // 1. REMOVED 'disabled={!canOpen}' to fix the click issue
         className="dock-icon rounded-2xl overflow-hidden transition-all duration-200 shadow-md w-full h-full relative"
         aria-label={name}
         data-tooltip-id="dock-tooltip"
         data-tooltip-content={name}
         data-tooltip-delay-show={100}
         onClick={(e) => {
-            // Prevent event bubbling issues
             e.stopPropagation();
             toggleApp({ id, canOpen });
         }}
@@ -59,7 +60,6 @@ const DockIcon = ({ mouseX, id, name, icon, canOpen = true, toggleApp }) => {
           src={`/images/${icon}`}
           alt={name}
           loading="lazy"
-          // 2. ADDED 'pointer-events-none': Makes sure the click goes to the BUTTON, not the image
           className="w-full h-full object-cover pointer-events-none" 
         />
       </button>
@@ -70,13 +70,26 @@ const DockIcon = ({ mouseX, id, name, icon, canOpen = true, toggleApp }) => {
 const Dock = () => {
   const mouseX = useMotionValue(Infinity);
   const { openWindow, closeWindow, windows } = useWindowStore() || { windows: {} };
+  // Get the setActiveLocation function
+  const { setActiveLocation } = useLocationStore();
 
   const toggleApp = (app) => {
-    // 1. Safety Check: If app is null or canOpen is false, stop here.
     if (!app || !app.canOpen) return;
+
+    // --- TRASH REDIRECTION LOGIC ---
+    if (app.id === "trash") {
+        // 1. Set the location to the 'Trash' folder defined in constants
+        setActiveLocation(locations.trash);
+        
+        // 2. Open (or Focus) the Finder window
+        openWindow("finder");
+        
+        console.log("Opened Trash via Finder");
+        return;
+    }
+    // -------------------------------
     
-    // 2. Safety Check: Does this app actually exist in our Window Store?
-    // This prevents the "Trash" crash since 'trash' isn't in WINDOW_CONFIG
+    // Standard logic for other apps
     if (!windows[app.id]) {
         console.warn(`No window config found for ID: ${app.id}`);
         return;
@@ -86,13 +99,11 @@ const Dock = () => {
 
     const windowState = windows[app.id];
 
-    if (windowState.isOpen) {
+    if (windowState?.isOpen) {
         closeWindow(app.id);
     } else {
         openWindow(app.id);
     }
-
-    console.log(windows);
   };
 
   return (

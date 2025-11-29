@@ -9,7 +9,6 @@ body {
   height: 100dvh;
 
   /* --- DARKENED WALLPAPER --- */
-  /* We add a black gradient layer with 0.3 (30%) opacity on top of the image */
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/images/wallpaper.jpg");
   
   background-size: cover;
@@ -18,7 +17,6 @@ body {
   padding: 0; 
   margin: 0;
   touch-action: none; 
-  /* Force dark mode base */
   background-color: #000;
   color: #e0e0e0;
 }
@@ -54,7 +52,6 @@ body {
 
 @layer components {
   .icon {
-    /* Dark mode hover state for toolbar icons */
     @apply p-1 hover:bg-white/10 rounded hover:cursor-default transition-colors text-gray-300;
   }
 
@@ -67,30 +64,47 @@ body {
     }
   }
 
-  /* --- iOS / macOS HOME SCREEN ICONS --- */
+  /* --- iOS / macOS HOME SCREEN ICONS (FIXED) --- */
   #home {
-    @apply relative z-0 w-full h-full pt-8 px-4 max-sm:block;
+    @apply relative z-0 w-full h-full pt-10 px-5 max-sm:block;
 
     ul {
+      /* MOBILE: Grid Layout */
       @apply max-sm:grid max-sm:grid-cols-4 max-sm:gap-x-4 max-sm:gap-y-8 max-sm:w-full;
 
+      /* DESKTOP: Auto-Arranging Column Layout 
+         - flex-col + flex-wrap: Stacks items down, then moves to next column (Mac behavior)
+         - h-[calc...]: Limits height so icons wrap before hitting the Dock area
+         - gap-y-6: Adds breathing room between folders
+      */
+      @apply sm:flex sm:flex-col sm:flex-wrap sm:content-start sm:gap-y-6 sm:gap-x-4 sm:h-[calc(100vh-10rem)];
+
       li {
-        @apply sm:absolute sm:z-0 sm:flex sm:flex-col sm:items-center sm:gap-1.5 cursor-pointer w-24;
+        /* DESKTOP: Authentic Mac Folder Styling 
+           - !top-auto: overrides manual positions to force auto-grid
+           - w-[5.5rem]: constraints width for text wrapping
+        */
+        @apply sm:relative sm:!top-auto sm:!left-auto sm:!right-auto sm:!bottom-auto 
+               sm:z-0 sm:flex sm:flex-col sm:items-center sm:gap-1 cursor-pointer w-[5.5rem];
+        
+        /* Mobile Styles */
         @apply max-sm:relative max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-start max-sm:w-auto;
 
         img {
+          /* Mac Folder Size: 56px (w-14) */
           @apply w-14 h-14 object-contain drop-shadow-md;
           @apply max-sm:size-16 max-sm:rounded-2xl max-sm:bg-transparent max-sm:shadow-sm;
         }
 
         p {
-          @apply text-[11px] font-bold text-white text-center leading-[1.2] tracking-wide 
-                 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
+          /* Mac Font Styling: 11px, Bold, Shadowed */
+          @apply text-[11px] font-bold text-white text-center leading-tight tracking-wide 
+                 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]
                  px-1.5 py-0.5 rounded-[4px]
                  break-words w-full;
           
-          /* Dark Mode Selection Blue */
-          @apply sm:group-hover:bg-[#0A84FF] sm:group-hover:text-white;
+          /* Selection Highlight (Mac Blue) */
+          @apply sm:group-hover:bg-[#0061D5] sm:group-hover:text-white;
 
           @apply max-sm:text-xs max-sm:mt-1 max-sm:font-medium max-sm:drop-shadow-md max-sm:group-hover:bg-transparent;
         }
@@ -98,13 +112,17 @@ body {
     }
   }
 
-  /* --- DOCK STYLES (Dark Glass) --- */
+  /* --- DOCK STYLES (FIXED ZOOM) --- */
   #dock {
     @apply fixed bottom-4 left-0 w-full flex justify-center z-[9999] select-none;
 
     .dock-container {
-      /* Dark translucent background */
-      @apply h-14 max-sm:h-20 bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl px-3 flex items-end gap-3 overflow-visible max-sm:w-[90%] max-sm:justify-between max-sm:px-4 max-sm:pb-4 shadow-2xl;
+      /* LOCK HEIGHT: min-h and max-h enforce rigid height (56px) 
+         so only icons scale, not the glass bar. */
+      @apply h-14 min-h-[3.5rem] max-h-[3.5rem] max-sm:h-20 max-sm:min-h-[5rem] max-sm:max-h-[5rem]
+             bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl 
+             px-3 flex items-end gap-3 overflow-visible 
+             max-sm:w-[90%] max-sm:justify-between max-sm:px-4 max-sm:pb-4 shadow-2xl;
     }
 
     .dock-tooltip {
@@ -125,21 +143,17 @@ body {
     .maximize { @apply size-3.5 rounded-full bg-[#28c840] border border-black/10; }
   }
 
-  /* --- WINDOW HEADER (Dark Theme) --- */
   #window-header {
-    /* #2d2d2d is standard Mac Dark Title Bar */
     @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-[#2d2d2d] border-b border-black/50 select-none text-sm text-[#a1a1a1] max-sm:hidden shadow-sm;
   }
 
-  /* --- APPS / WINDOWS SCALING (Dark Theme Updates) --- */
+  /* --- APPS / WINDOWS SCALING --- */
 
   #safari {
-    /* Main Background: #1e1e1e */
     @apply w-[60rem] absolute top-40 left-2/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
            max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[#e0e0e0];
 
     .search {
-      /* Dark Input Field */
       @apply flex items-center gap-3 w-2/3 bg-[#3a3a3a] border border-[#555] rounded-lg px-3 py-2 max-sm:w-full shadow-inner;
       input { @apply placeholder:text-[#888] w-full bg-transparent text-white outline-none; }
     }
@@ -161,7 +175,6 @@ body {
   }
 
   #terminal {
-    /* Dark Terminal Background with Blur */
     @apply w-[36rem] absolute top-32 left-1/12 bg-[#1e1e1e]/95 backdrop-blur-md shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
            max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 border border-white/10;
 
@@ -180,10 +193,7 @@ body {
       }
       .footnote {
         @apply text-[#28c840] space-y-1;
-        p { 
-          @apply flex items-center; 
-          svg { @apply w-5 me-5; }
-        }
+        p { @apply flex items-center; svg { @apply w-5 me-5; } }
       }
     }
   }
@@ -198,7 +208,6 @@ body {
     ul {
       @apply flex items-center gap-3 max-sm:flex-col max-sm:gap-6 max-sm:mt-10;
       li {
-        /* Dark Cards */
         @apply rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300 max-sm:w-full bg-[#2d2d2d] border border-white/5 shadow-lg;
         a { @apply space-y-5; }
         p { @apply font-semibold text-sm text-white; }
@@ -213,7 +222,6 @@ body {
     @apply max-sm:flex max-sm:flex-col;
 
     .sidebar {
-      /* Sidebar: #2d2d2d with Blur */
       @apply w-3/12 flex-none bg-[#2d2d2d]/95 backdrop-blur-xl border-r border-black/50 flex flex-col p-5
              max-sm:w-full max-sm:h-auto max-sm:border-r-0 max-sm:border-b;
 
@@ -222,7 +230,6 @@ body {
         @apply max-sm:flex max-sm:gap-4 max-sm:overflow-x-auto;
         li {
           @apply flex space-y-1 items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors hover:bg-white/10;
-          /* Active Item: macOS Blue */
           &:first-child { @apply bg-[#0A84FF] text-white; }
           img { @apply w-4; }
           p { @apply text-sm font-medium; }
@@ -266,7 +273,6 @@ body {
       h3 { @apply text-xs font-medium text-[#888] mb-1 max-sm:hidden; }
       ul {
         @apply space-y-1 max-sm:flex max-sm:space-y-0 max-sm:gap-2;
-        /* Active Item: macOS Blue */
         .active { @apply bg-[#0A84FF] text-white; }
         .not-active { @apply text-[#cccccc] hover:bg-white/10; }
         li { @apply flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors; }
