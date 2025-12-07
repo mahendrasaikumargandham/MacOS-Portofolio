@@ -16,12 +16,12 @@ body {
   background-position: center;
   padding: 0; 
   margin: 0;
-  touch-action: none; 
+  touch-action: manipulation;
   background-color: #000;
   color: #e0e0e0;
 }
 
-/* --- CUSTOM DARK SCROLLBAR (Added Back) --- */
+/* --- CUSTOM DARK SCROLLBAR --- */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -91,7 +91,7 @@ body {
     }
   }
 
-  /* --- iOS / macOS HOME SCREEN ICONS (FIXED) --- */
+  /* --- iOS / macOS HOME SCREEN ICONS --- */
   #home {
     @apply relative z-0 w-full h-full pt-10 px-4 max-sm:block;
 
@@ -99,9 +99,7 @@ body {
       /* MOBILE: Standard Grid */
       @apply max-sm:grid max-sm:grid-cols-4 max-sm:gap-x-4 max-sm:gap-y-8 max-sm:w-full;
 
-      /* DESKTOP: GRID with COLUMN FLOW 
-         This fixes the overlapping issue by allocating specific slots.
-      */
+      /* DESKTOP: GRID with COLUMN FLOW */
       @apply sm:grid sm:grid-flow-col sm:grid-rows-[repeat(auto-fill,7.5rem)] 
              sm:content-start sm:gap-x-2 sm:gap-y-0 
              sm:h-[calc(100vh-8rem)] sm:w-fit;
@@ -168,7 +166,7 @@ body {
   /* --- APPS / WINDOWS SCALING --- */
 
   #safari {
-    @apply w-[60rem] absolute top-40 left-2/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+    @apply w-[60rem] h-[40rem] flex flex-col absolute top-40 left-2/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
            max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[#e0e0e0];
 
     .search {
@@ -177,7 +175,7 @@ body {
     }
 
     .blog {
-      @apply bg-[#1e1e1e] p-10 max-w-3xl mx-auto max-sm:p-4;
+      @apply flex-1 overflow-y-auto bg-[#1e1e1e] p-10 max-w-3xl mx-auto w-full max-sm:p-4;
       h2 { @apply text-xl font-bold text-pink-500 mb-10; }
       .blog-post {
         @apply grid grid-cols-12 space-x-5 max-sm:flex max-sm:flex-col max-sm:space-x-0 max-sm:gap-4;
@@ -186,7 +184,6 @@ body {
           @apply col-span-10 space-y-3;
           p { @apply text-xs text-[#a1a1a1]; }
           h3 { @apply font-semibold text-base text-[#e0e0e0]; }
-          /* a { @apply text-[#4daafc] text-xs hover:underline flex items-center gap-3; } */
         }
       }
     }
@@ -234,13 +231,13 @@ body {
   }
 
   #photos {
-    @apply w-[50rem] absolute top-96 left-1/2 -translate-y-1/2 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+    /* ADDED: h-[35rem] and flex-col to force height and structure */
+    @apply w-[50rem] h-[35rem] flex flex-col absolute top-96 left-1/2 -translate-y-1/2 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
            max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:translate-x-0 max-sm:translate-y-0 max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[#e0e0e0];
 
-    @apply max-sm:flex max-sm:flex-col;
-
     .sidebar {
-      @apply w-3/12 flex-none bg-[#2d2d2d]/95 backdrop-blur-xl border-r border-black/50 flex flex-col p-5
+      /* ADDED: h-full to stretch the sidebar */
+      @apply w-3/12 h-full flex-none bg-[#2d2d2d]/95 backdrop-blur-xl border-r border-black/50 flex flex-col p-5
              max-sm:w-full max-sm:h-auto max-sm:border-r-0 max-sm:border-b;
 
       h2 { @apply text-xs font-medium text-[#888] mb-1; }
@@ -256,11 +253,14 @@ body {
     }
 
     .gallery {
-      @apply p-5 max-sm:flex-1 max-sm:overflow-y-auto bg-[#1e1e1e];
+      /* ADDED: flex-1 overflow-y-auto to enable scrolling */
+      @apply p-5 flex-1 overflow-y-auto bg-[#1e1e1e];
+      
       ul {
         @apply grid grid-cols-5 grid-rows-5 gap-2.5 max-sm:grid-cols-2 max-sm:grid-rows-none max-sm:auto-rows-fr;
         li {
           img { @apply size-full object-cover rounded-lg border border-white/10; }
+          /* Logic to span grid items creatively */
           &:first-child, &:nth-child(2), &:nth-child(3), &:last-child { @apply max-sm:row-span-1 max-sm:col-span-1; }
           &:first-child { @apply sm:row-start-1 sm:row-span-3 sm:col-start-1 sm:col-span-3; }
           &:nth-child(2) { @apply sm:row-start-1 sm:row-span-3 sm:col-start-4 sm:col-span-2; }
@@ -308,8 +308,11 @@ body {
     }
   }
 
+  /* --- FIXED DIMENSION WINDOWS --- */
+  
   #txtfile, #imgfile {
-    @apply w-[30rem] absolute top-36 right-32 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+    @apply w-[30rem] h-[30rem] absolute top-36 right-32 
+           bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col
            max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[#e0e0e0];
 
     h2 { @apply font-bold text-sm text-center w-full; }
