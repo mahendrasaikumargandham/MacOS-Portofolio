@@ -10,6 +10,11 @@ const navLinks = [
     type: "experience",
   },
   {
+    id: 4,
+    name: "Certifications",
+    type: "certifications"
+  },
+  {
     id: 2,
     name: "Contact",
     type: "contact",
@@ -573,6 +578,103 @@ const EXPERIENCE_LOCATION = {
   ],
 };
 
+const CERTIFICATIONS_LOCATION = {
+  id: 6,
+  type: "certifications",
+  name: "Certifications",
+  icon: "/icons/file.svg", // Make sure to add a certificate icon to your public/icons folder
+  kind: "folder",
+  children: [
+    {
+      id: 60,
+      name: "Microsoft",
+      icon: "/images/folder.png", // Replace with your actual logo image path
+      kind: "folder",
+      position: "top-10 left-10",
+      children: [
+        {
+          id: 601,
+          name: "Microsoft Certified: Azure Administrator Associate.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "Microsoft Certified: Azure Administrator Associate",
+          ]
+        },
+        {
+          id: 602,
+          name: "Cerificate Link",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://learn.microsoft.com/en-gb/users/mahendragandham-7588/credentials/39884AD703B4BF2D?ref=https%3A%2F%2Fwww.linkedin.com%2F",
+          position: "top-5 right-15",
+        },
+      ]
+    },
+    {
+      id: 61,
+      name: "SAFe®",
+      icon: "/images/folder.png", // Replace with your actual logo image path
+      kind: "folder",
+      position: "top-10 left-48",
+      children: [
+        {
+          id: 611,
+          name: "Certified SAFe® 6 Practitioner.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "Certified SAFe® 6 Practitioner",
+          ]
+        },
+        {
+          id: 612,
+          name: "Cerificate Link",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://www.credly.com/badges/b6a4dfaf-39d5-42cc-8567-e2042b00ef68/linked_in_profile",
+          position: "top-20 right-25",
+        },
+      ]
+    },
+    {
+      id: 62,
+      name: "Hero Vired x Nodwin Gaming",
+      icon: "/images/folder.png", // Replace with your actual logo image path
+      kind: "folder",
+      position: "top-10 right-20",
+      children: [
+        {
+          id: 611,
+          name: "Certificate Program in Gaming & Esports- Batch 4.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-25 left-25",
+          description: [
+            "Certificate Program in Gaming & Esports- Batch 4",
+          ]
+        },
+        {
+          id: 612,
+          name: "Cerificate Link",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://herovired.certificate.givemycertificate.com/c/efd6a38f-1446-4d03-bbeb-45ac6e3420e4",
+          position: "top-5 right-15",
+        },
+      ]
+    }
+  ],
+};
+
 const TRASH_LOCATION = {
   id: 4,
   type: "trash",
@@ -606,6 +708,7 @@ export const locations = {
   about: ABOUT_LOCATION,
   resume: RESUME_LOCATION,
   experience: EXPERIENCE_LOCATION,
+  certifications: CERTIFICATIONS_LOCATION,
   trash: TRASH_LOCATION,
 };
 
