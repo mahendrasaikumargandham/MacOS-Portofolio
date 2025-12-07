@@ -8,9 +8,10 @@ import WindowWrapper from '../hoc/WindowWrapper';
 const Photos = () => {
     const { openWindow } = useWindowStore();
   return (
-    <>
-        <div id = "window-header">
-            <WindowControls target = "photos" />
+    <div className="flex flex-col h-full w-full">
+        {/* Header: Fixed height */}
+        <div id="window-header" className="flex-none">
+            <WindowControls target="photos" />
 
             <div className='w-full flex justify-end items-center gap-3 text-gray-500'>
                 <Mail className='icon' />
@@ -18,13 +19,14 @@ const Photos = () => {
             </div> 
         </div>
 
-        <div className='flex w-full'>
+        {/* Content: Fills remainder, handles resizing via CSS */}
+        <div className='flex flex-1 overflow-hidden w-full max-sm:flex-col'>
             <div className='sidebar'>
                 <h2>Photos</h2>
                 <ul>
                     {photosLinks.map(({ id, icon, title }) => (
-                        <li key = {id}>
-                            <img src = {icon} alt = {title} />
+                        <li key={id}>
+                            <img src={icon} alt={title} />
                             <p>{title}</p>
                         </li>
                     ))}
@@ -36,7 +38,7 @@ const Photos = () => {
                     <ul>
                         {gallery.map(({id, img}) => (
                             <li 
-                                key = {id}
+                                key={id}
                                 onClick={() => 
                                     openWindow("imgfile", {
                                         id,
@@ -48,13 +50,14 @@ const Photos = () => {
                                     })
                                 }
                             >
-                                <img src = {img} alt = {`Gallery image ${id}`} />
+                                <img src={img} alt={`Gallery image ${id}`} />
                             </li>
                         ))}
                     </ul>
             </div>
+            
         </div>
-    </>
+    </div>
   )
 }
 

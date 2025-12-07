@@ -82,25 +82,32 @@ const dockApps = [
 const blogPosts = [
   {
     id: 1,
-    date: "Sep 2, 2025",
+    date: "Mar 2, 2025",
     title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-    image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+      "The Importance of System Design: Beyond the Basics",
+    image: "/images/sd.png",
+    link: "https://www.linkedin.com/pulse/importance-system-design-beyond-basics-mahendra-gandham-zeruc",
   },
   {
     id: 2,
     date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
-    image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    title: "Unlocking the Power: How Mutex Locks Keep Your Game Running Smoothly",
+    image: "/images/mutex.png",
+    link: "https://www.linkedin.com/pulse/unlocking-power-how-mutex-locks-keep-your-game-running-gandham-inmcc",
   },
   {
     id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
-    image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    date: "Jan 15, 2025",
+    title: "Dynamic NPC Behavior: A Deep Dive into Proximity-Based Spawning and Despawning",
+    image: "/images/npc.jpg",
+    link: "https://www.linkedin.com/pulse/dynamic-npc-behavior-deep-dive-proximity-based-spawning-gandham-9dane",
+  },
+  {
+    id: 4,
+    date: "Jan 6, 2025",
+    title: "Esports: The Algorithm of Excitement - Decoding the Future of Entertainment",
+    image: "/images/bgmi.jpg",
+    link: "https://www.linkedin.com/pulse/esports-algorithm-excitement-decoding-future-mahendra-gandham-n8myc",
   },
 ];
 
@@ -191,21 +198,17 @@ const photosLinks = [
 ];
 
 const gallery = [
-  {
-    id: 1,
-    img: "/images/gal1.png",
-  },
+  // {
+  //   id: 1,
+  //   img: "/images/1.jpeg",
+  // },
   {
     id: 2,
-    img: "/images/gal2.png",
+    img: "/images/2.jpeg",
   },
   {
     id: 3,
-    img: "/images/gal3.png",
-  },
-  {
-    id: 4,
-    img: "/images/gal4.png",
+    img: "/images/3.jpeg",
   },
 ];
 
@@ -280,6 +283,15 @@ const WORK_LOCATION = {
           position: "top-52 right-80",
           imageUrl: "/images/main-menu.png",
         },
+        {
+          id: 104,
+          name: "Gameplay UI.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-60 right-20",
+          imageUrl: "/images/gameplay-av.jpg",
+        },
       ],
     },
 
@@ -347,44 +359,45 @@ const WORK_LOCATION = {
       children: [
         {
           id: 121,
-          name: "Food Delivery App Project.txt",
+          name: "Game Details.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-            "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-            "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-            "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
-          ],
+            "PROJECT 1: RUBIX RAMPAGE (Open World Engine)",
+            "Rubix Rampage is an ambitious technical showcase—a fully functional open-world action game inspired by the mechanics of GTA Vice City. This wasn't just about building a game; it was about engineering a living, breathing world.",
+            "• Core Mechanics: I engineered a robust Third-Person Controller featuring advanced camera logic, responsive shooting mechanics, and arcade-style vehicle physics that feel satisfying to drive.",
+            "• AI & Systems: The world is populated by a Professional AI system. NPCs have specific patrol routes and behaviors, reacting dynamically to the player. I also implemented a scalable 'Wanted Level' police system that ramps up difficulty based on player actions.",
+            "• Game Loop: Beyond the sandbox, the game features a structured Mission System complete with cinematic cut-scenes to drive the narrative forward.",
+          ]
         },
         {
           id: 122,
-          name: "food-delivery-app.com",
+          name: "gameplay-video.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
+          href: "https://youtu.be/K0fmCSgu_UI",
           position: "top-10 right-20",
         },
         {
           id: 123,
-          name: "food-delivery-app.png",
+          name: "Cut Scenes.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-3.png",
+          imageUrl: "/images/cutscene.jpg",
         },
         {
           id: 124,
-          name: "Design.fig",
-          icon: "/images/plain.png",
+          name: "Gameplay UI.png",
+          icon: "/images/image.png",
           kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
+          fileType: "img",
           position: "top-60 right-20",
+          imageUrl: "/images/gameplay.jpg",
         },
       ],
     },
@@ -405,25 +418,25 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/itsme.jpg",
     },
     {
       id: 202,
-      name: "casual-me.png",
+      name: "with-gameeon-ceo.png",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/gameeon.jpeg",
     },
     {
       id: 203,
-      name: "conference-me.png",
+      name: "with-ajay.png",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/nodwin.jpeg",
     },
     {
       id: 204,
@@ -433,13 +446,24 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      image: "/images/main.jpeg",
       description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
-        "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
+        "Hey! I’m Mahendra 👋. I don't just write code; I engineer experiences. I’m a Game Developer at heart and a Full-Stack Architect by trade.",
+        "My playground is Unity and C#, where I craft high-performance multiplayer games. From handling real-time network sync with Photon PUN to optimizing frame rates, I thrive on the complexity of bringing virtual worlds to life.",
+        "Beyond gaming, I’m a heavy hitter in the MERN stack and RAG development. Armed with elite DSA skills and a passion for System Design, I build scalable, intelligent applications that solve hard problems efficiently.",
+        "Currently, I'm driving impact at Accenture as an Associate Software Engineer, bridging the gap between creative game mechanics and robust enterprise software.",
+        "Whether it's optimizing a render loop or architecting a cloud backend, I'm obsessed with performance, precision, and pushing the boundaries of what code can do. Let's build something legendary. 🚀",
       ],
+    },
+    {
+      id: 205,
+      name: "Game Dev Me.png",
+      icon: "/images/image.png",
+      kind: "file",
+      fileType: "img",
+      href: "https://youtu.be/mZx57gI02Jc",
+      position: "top-10 right-20",
+      imageUrl: "/images/stats.jpeg",
     },
   ],
 };
@@ -493,15 +517,15 @@ const EXPERIENCE_LOCATION = {
                 "• Upheld enterprise standards through testing and peer reviews."
             ]
         },
-        {
-          id: 502,
-          name: "Party-night.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-5 left-40",
-          imageUrl: "/images/party.jpeg"
-        },
+        // {
+        //   id: 502,
+        //   name: "Party-night.png",
+        //   icon: "/images/image.png",
+        //   kind: "file",
+        //   fileType: "img",
+        //   position: "top-5 left-40",
+        //   imageUrl: "/images/party.jpeg"
+        // },
         // {
         //   id: 503,
         //   name: "Offer_Letter.pdf", 
@@ -528,20 +552,21 @@ const EXPERIENCE_LOCATION = {
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Full Stack Intern | 2021 - 2022",
-            "• Built RESTful APIs using Node.js and Express for a high-traffic e-commerce platform.",
-            "• Integrated Stripe payment gateway and managed secure webhooks.",
-            "• Optimized MongoDB aggregation pipelines for faster data retrieval."
+            "Software Engineer Intern | Aug 2023 - July 2024",
+            "• Developed a robust login system for the Kanine Klans game.",
+            "• Integrated Blockchain APIs to securely maintain user data and manage the in-game purchase system.",
+            "• Implemented complex game mechanics including the LAP system, AI NPC system, and Garage system.",
+            "• Worked on backend integration and game logic optimization."
           ]
         },
         {
           id: 512,
-          name: "Launch_Day.png",
+          name: "Work.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-5 left-40",
-          imageUrl: "/images/launch-day.jpg"
+          imageUrl: "/images/kk.jpeg"
         }
       ]
     }

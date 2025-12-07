@@ -23,17 +23,19 @@ const Image = () => {
             <h2>{name}</h2>
         </div>
 
-        <div className='p-5 bg-1e1e1e flex-1 overflow-y-auto flex items-center justify-center'>
+        <div className='bg-[#1e1e1e] flex-1 overflow-auto p-5'>
             {imageUrl ? (
-                <div className='w-full h-full flex items-center justify-center'>
+                <div className='min-h-full w-full flex items-center justify-center'>
                     <img 
                         src={imageUrl} 
                         alt={name} 
-                        className='max-w-full max-h-full rounded object-contain' 
+                        className='max-w-full h-auto rounded object-contain shadow-lg' 
                     />
                 </div>
             ) : (
-                <p className="text-gray-400 italic">No image source found</p>
+                <div className="h-full flex items-center justify-center">
+                    <p className="text-gray-400 italic">No image source found</p>
+                </div>
             )}
         </div>
     </div>
