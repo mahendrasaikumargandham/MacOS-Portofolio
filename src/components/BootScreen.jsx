@@ -3,15 +3,16 @@ import { motion } from "framer-motion";
 
 const BootScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
-  const [isBooted, setIsBooted] = useState(false); // New state to trigger fade-out
+  const [isBooted, setIsBooted] = useState(false);
 
   useEffect(() => {
+    // Compressed timeline to fit within 3 seconds
     const timeline = [
-      { width: 30, delay: 400 },
-      { width: 30, delay: 1500 },
-      { width: 75, delay: 2500 },
-      { width: 80, delay: 3500 },
-      { width: 100, delay: 4500 },
+      { width: 30, delay: 200 },   // Immediate start
+      { width: 30, delay: 800 },   // Brief pause
+      { width: 75, delay: 1500 },  // Quick jump
+      { width: 85, delay: 2200 },  // Almost there
+      { width: 100, delay: 2600 }, // Finished loading
     ];
 
     let timeouts = [];
@@ -20,20 +21,18 @@ const BootScreen = ({ onComplete }) => {
       timeouts.push(setTimeout(() => setProgress(width), delay));
     });
 
-    // Instead of calling onComplete immediately, we trigger the internal fade-out first
+    // Trigger fade-out exactly at 3000ms (3s)
     timeouts.push(setTimeout(() => {
       setIsBooted(true);
-    }, 5000));
+    }, 3000));
 
     return () => timeouts.forEach(clearTimeout);
   }, []);
 
   return (
     <motion.div
-      // Animate opacity to 0 when 'isBooted' becomes true
       animate={{ opacity: isBooted ? 0 : 1 }}
-      transition={{ duration: 1.0, ease: "easeInOut" }}
-      // Only call onComplete (to unmount) AFTER the fade animation finishes
+      transition={{ duration: 0.8, ease: "easeInOut" }} // Slightly faster fade out
       onAnimationComplete={() => {
         if (isBooted) onComplete();
       }}
@@ -59,11 +58,11 @@ const BootScreen = ({ onComplete }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="w-48 h-1.5 bg-[#333] rounded-full overflow-hidden"
+        transition={{ delay: 0.4, duration: 0.5 }}
+        className="w-40 h-1 bg-[#333] rounded-full overflow-hidden" // Slightly thinner bar
       >
         <motion.div
-          className="h-full bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+          className="h-full bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)]"
           initial={{ width: "0%" }}
           animate={{ width: `${progress}%` }}
           transition={{ ease: "easeInOut", duration: 0.5 }}
