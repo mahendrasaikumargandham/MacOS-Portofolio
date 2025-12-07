@@ -32,6 +32,10 @@ const Navbar = () => {
             case 'resume':
                 openWindow('resume');
                 break;
+            case 'certifications':
+                setActiveLocation(locations.certifications);
+                openWindow('finder');
+                break;
             default:
                 openWindow(type);
         }

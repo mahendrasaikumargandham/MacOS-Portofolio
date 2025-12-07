@@ -63,6 +63,8 @@ const Finder = () => {
                     
                     {/* 2. Work Projects */}
                     {locations.work?.children && renderList("Work", locations.work.children)}
+
+                    {locations.certifications?.children && renderList("Certifications", locations.certifications.children)}
                 </div>
 
                 <ul className='content flex-1 p-8 grid grid-cols-4 gap-4 content-start overflow-y-auto h-full'>
