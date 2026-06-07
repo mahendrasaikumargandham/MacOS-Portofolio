@@ -517,13 +517,16 @@ const EXPERIENCE_LOCATION = {
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-                "Associate Software Engineer | Aug 2024 - Present",
-                "• Led customization of enterprise modules with Hexagon EAM, boosting efficiency and performance by 40%.",
-                "• Optimized SDLC using Azure DevOps for version control, CI/CD, and agile tracking.",
-                "• Supported SAFe alignment in 2+ PI sessions, managing cross-team dependencies.",
+                "-> Software Engineer | May 2026 - Present",
+                "• Architected a scalable, concurrent Java integration service featuring dynamically configurable thread pools for high-volume data ingestion into Hexagon EAM and DB Pro, automating workflow execution and reducing QA cycle time by 80%.",
+                "• Spearheaded AI-assisted engineering initiatives by developing and deploying custom Copilot Agents, accelerating development lifecycles and boosting team productivity by 40%.",
+                "• Optimized enterprise architecture and backend systems using advanced LLM tooling (Claude Code) to refactor complex backend logic and Extensibility Frameworks, driving a 60% improvement in overall application performance and efficiency.",
+                "   ",
+                "-> Associate Software Engineer | Aug 2024 - May 2026",
+                "• Agile Planning & Execution: Actively contribute to SAFe Program Increment (PI) Planning to define and align on sprint objectives. Utilize Azure DevOps to manage and track assigned tasks and deliverables from onshore teams, ensuring clear communication and timely execution.",
+                "• Backend Automation: Specialize in PL/SQL-based Business Flex Rules to automate backend logic, using triggers to ensure real-time data integrity and improve asset management process efficiency by ~20%.",
+                "• Full-Stack Enhancement: Develop scalable workflows using Ext JS and design custom screens and grids with UDS/Grid Designer to enhance the core functionality of Hexagon EAM, significantly improving user productivity.",
                 "• Awarded 'Best Performer' in first 3 months for adaptability and early delivery.",
-                "• Collaborated in Agile teams to resolve issues and improve system performance.",
-                "• Upheld enterprise standards through testing and peer reviews."
             ]
         },
         // {

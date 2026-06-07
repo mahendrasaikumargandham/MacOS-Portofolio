@@ -51,7 +51,7 @@ const Resume = () => {
                 <h2>Resume.pdf</h2>
 
                 <a 
-                    href="/files/resume.pdf" 
+                    href="/files/MahendraResume.pdf" 
                     download
                     className='cursor-pointer hover:bg-white/10 p-1.5 rounded transition-colors text-gray-300 hover:text-white'
                     title="Download Resume"
@@ -69,7 +69,7 @@ const Resume = () => {
                         <AlertCircle size={48} className="text-red-400" />
                         <p>Unable to render PDF preview.</p>
                         <a 
-                            href="/files/resume.pdf" 
+                            href="/files/MahendraResume.pdf" 
                             download 
                             className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded text-sm font-medium transition-colors"
                         >
@@ -78,7 +78,7 @@ const Resume = () => {
                     </div>
                 ) : (
                     <Document
-                        file="/files/resume.pdf"
+                        file="/files/MahendraResume.pdf"
                         onLoadSuccess={onDocumentLoadSuccess}
                         onLoadError={onDocumentLoadError}
                         options={pdfOptions}
