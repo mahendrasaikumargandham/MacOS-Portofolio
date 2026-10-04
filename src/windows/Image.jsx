@@ -23,7 +23,7 @@ const Image = () => {
             <h2>{name}</h2>
         </div>
 
-        <div className='bg-[#1e1e1e] flex-1 overflow-auto p-5'>
+        <div className='bg-[var(--surface)] flex-1 overflow-auto p-5'>
             {imageUrl ? (
                 <div className='min-h-full w-full flex items-center justify-center'>
                     <img 
@@ -34,7 +34,7 @@ const Image = () => {
                 </div>
             ) : (
                 <div className="h-full flex items-center justify-center">
-                    <p className="text-gray-400 italic">No image source found</p>
+                    <p className="text-[var(--muted)] italic">No image source found</p>
                 </div>
             )}
         </div>

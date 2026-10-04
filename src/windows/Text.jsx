@@ -3,13 +3,9 @@ import useWindowStore from '../store/window'
 import { WindowControls } from '../components';
 import WindowWrapper from '../hoc/WindowWrapper';
 
-const Text = () => {
-    const { windows } = useWindowStore();
-    const data = windows.txtfile?.data;
-
     // Helper for consistent layout structure even in empty/loading states
     const Layout = ({ title, children }) => (
-        <div className="flex flex-col h-full w-full bg-[#1e1e1e]">
+        <div className="flex flex-col h-full w-full bg-[var(--surface)]">
             {/* Header: Fixed height, stays at top */}
             <div id="window-header" className="flex-none">
                 <WindowControls target="txtfile" />
@@ -22,6 +18,11 @@ const Text = () => {
             </div>
         </div>
     );
+
+
+const Text = () => {
+    const { windows } = useWindowStore();
+    const data = windows.txtfile?.data;
 
     // Empty State
     if (!data) {
@@ -50,11 +51,11 @@ const Text = () => {
                 )}
 
                 {subtitle && (
-                    <h3 className="text-xl font-semibold text-gray-100">{subtitle}</h3>
+                    <h3 className="text-xl font-semibold text-[var(--text)]">{subtitle}</h3>
                 )}
 
                 {Array.isArray(description) && description.length > 0 && (
-                    <div className="space-y-4 leading-relaxed text-gray-300 font-georama">
+                    <div className="space-y-4 leading-relaxed text-[var(--muted)] font-georama">
                         {description.map((para, idx) => (
                             <p key={idx}>{para}</p>
                         ))}

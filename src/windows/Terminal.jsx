@@ -39,12 +39,9 @@ const Terminal = () => {
 
             <div className='footnote'>
                 <p>
-                    <Check size = {20} /> 6 of 6 Stacks loaded successfully (100%)! 
+                    <Check size = {20} /> {techStack.length} categories loaded successfully
                 </p>
-                <p className='text-black'>
-                    <Flag size = {15} fill = "black" />
-                    Render time: 5ms
-                </p>
+
             </div>
         </div>
     </>

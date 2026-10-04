@@ -11,11 +11,11 @@ const Contact = () => {
             <h2>Contact me</h2>
         </div>
 
-        <div className='p-5 space-y-5'>
+        <div className='contact-card p-5 space-y-5'>
             <img src = "/images/mahendragandham.png" alt = "Mahendra" className='w-20 rounded-full' />
             <h3>Let's connect</h3>
-            <p>Got an idea? A bug to squash? or just wanna talk tech? I'm in.</p>
-            <p>Contact: mahendragandham730@gmail.com</p>
+            <p>Software Analyst at Accenture, developer, and content creator based in Hyderabad. Let's connect about software, games, or content collaborations.</p>
+            <a className="contact-email" href="mailto:mahendragandham730@gmail.com">mahendragandham730@gmail.com</a>
             <ul>
                 {socials.map(({ id, bg, link, icon, text }) => (
                     <li key = {id} style = {{ backgroundColor : bg }}>

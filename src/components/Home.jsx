@@ -22,10 +22,14 @@ const Home = () => {
     }
 
     useGSAP(() => { 
-        Draggable.create(".folder", {
+        const media = gsap.matchMedia();
+        media.add('(min-width: 640px)', () => {
+        const instances = Draggable.create(".folder", {
             bounds: "#home", // Keep icons within the desktop
-            inertia: true,
         });
+        return () => instances.forEach((instance) => instance.kill());
+        });
+        return () => media.revert();
     }, []);
 
   return (
@@ -38,6 +42,8 @@ const Home = () => {
                     // 'folder' is not a tailwind class but useful for GSAP selector
                     className={clsx("group folder font-sf", project.windowPosition)}
                     onClick={() => handleOpenProjectFinder(project)}
+                    role="button" tabIndex={0}
+                    onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); handleOpenProjectFinder(project); } }}
                 >
                     <img src="/images/folder.png" alt={project.name} />
                     <p>{project.name}</p>

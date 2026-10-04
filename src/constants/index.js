@@ -10,7 +10,7 @@ const navLinks = [
     type: "experience",
   },
   {
-    id: 4,
+    id: 5,
     name: "Certifications",
     type: "certifications"
   },
@@ -118,33 +118,86 @@ const blogPosts = [
 
 const techStack = [
   {
-    category: "Frontend",
-    items: ["React.js", "Next.js", "TypeScript"],
+    "category": "Project stack",
+    "items": [
+      "PL/SQL",
+      "JavaScript",
+      "Java",
+      "Python"
+    ]
   },
   {
-    category: "Game Dev",
-    items: ["Unity", "C#"],
+    "category": "Languages",
+    "items": [
+      "Java",
+      "Python",
+      "C/C++",
+      "JavaScript",
+      "SQL",
+      "C#"
+    ]
   },
   {
-    category: "Mobile",
-    items: ["React Native", "Expo"],
+    "category": "Backend",
+    "items": [
+      "Spring Boot",
+      "REST APIs",
+      "Microservices",
+      "Multithreading"
+    ]
   },
   {
-    category: "Programming",
-    items: ["Java", "Python", "C++"],
+    "category": "Frontend",
+    "items": [
+      "Next.js",
+      "React.js",
+      "Tailwind CSS",
+      "Ext JS"
+    ]
   },
   {
-    category: "Backend",
-    items: ["Node.js", "Express", "RAG"],
+    "category": "Databases",
+    "items": [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB"
+    ]
   },
   {
-    category: "Database",
-    items: ["MongoDB", "PostgreSQL", "VectorDB"],
+    "category": "Messaging",
+    "items": [
+      "Redis",
+      "Apache Kafka"
+    ]
   },
   {
-    category: "Dev Tools",
-    items: ["Git", "GitHub", "Docker"],
+    "category": "Cloud & Tools",
+    "items": [
+      "Docker",
+      "Git",
+      "GitHub Actions",
+      "AWS EC2/S3",
+      "Firebase"
+    ]
   },
+  {
+    "category": "Game Dev",
+    "items": [
+      "Unity",
+      "Photon PUN"
+    ]
+  },
+  {
+    "category": "Fundamentals",
+    "items": [
+      "DSA",
+      "OOP",
+      "DBMS",
+      "Operating Systems",
+      "System Design",
+      "Distributed Systems"
+    ]
+  }
 ];
 
 const socials = [
@@ -243,238 +296,291 @@ export {
 // 5000 series -> Experience items
 
 const WORK_LOCATION = {
-  id: 1,
-  type: "work",
-  name: "Work",
-  icon: "/icons/work.svg",
-  kind: "folder",
-  children: [
-    // ▶ Project 1
+  "id": 1,
+  "type": "work",
+  "name": "Work",
+  "icon": "/icons/work.svg",
+  "kind": "folder",
+  "children": [
     {
-      id: 10,
-      name: "TDM Multiplayer",
-      icon: "/images/folder.png",
-      kind: "folder",
-      position: "top-10 left-5",
-      windowPosition: "top-[5vh] left-5",
-      children: [
+      "id": 13,
+      "name": "ScaleWithMahi",
+      "icon": "/images/folder.png",
+      "kind": "folder",
+      "children": [
         {
-          id: 101,
-          name: "TDM Multiplayer.txt",
-          icon: "/images/txt.png",
-          kind: "file",
-          fileType: "txt",
-          position: "top-5 left-10",
-          description: [
+          "id": 131,
+          "name": "ScaleWithMahi.txt",
+          "icon": "/images/txt.png",
+          "kind": "file",
+          "fileType": "txt",
+          "subtitle": "ScaleWithMahi ? Tech Interview Prep Platform",
+          "description": [
+            "2026 | Java, Spring Boot, PostgreSQL, Next.js, Firebase, Tailwind CSS",
+            "Built a full-stack educational platform for Data Structures, Algorithms, and System Design, with a Java/Spring Boot REST API and PostgreSQL database.",
+            "Developed a gamification engine that tracks problem-solving streaks and daily activity, powering a GitHub-style consistency grid.",
+            "Integrated Firebase Authentication with Spring Security and stateless JWT validation to secure API routes and manage user sessions.",
+            "Designed a responsive, dark-mode frontend with mobile navigation, interactive progress tracking, and real-time feedback notifications."
+          ]
+        },
+        {
+          "id": 132,
+          "name": "Visit ScaleWithMahi",
+          "icon": "/images/safari.png",
+          "kind": "file",
+          "fileType": "url",
+          "href": "https://scalewithmahi.com/"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "TDM Multiplayer",
+      "icon": "/images/folder.png",
+      "kind": "folder",
+      "position": "top-10 left-5",
+      "windowPosition": "top-[5vh] left-5",
+      "children": [
+        {
+          "id": 101,
+          "name": "TDM Multiplayer.txt",
+          "icon": "/images/txt.png",
+          "kind": "file",
+          "fileType": "txt",
+          "position": "top-5 left-10",
+          "description": [
             "A high-octane Team Deathmatch shooter engineered for competitive play. Built with Unity and C#, this project focuses on responsive mechanics and real-time network synchronization using Photon PUN.",
             "Key Features:",
             "• seamless Multiplayer: Low-latency networking ensures every shot counts.",
             "• Secure Backend: Integrated Firebase Authentication (OAuth) for secure user login.",
             "• Persistent Data: Utilizes Cloud Firestore to track player progression, K/D ratios, and match history in real-time.",
             "It's not just a game, it's a full-stack multiplayer architecture demonstrating scalable code and robust cloud integration."
-          ],
+          ]
         },
         {
-          id: 102,
-          name: "gameplay-video.com",
-          icon: "/images/safari.png",
-          kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/mZx57gI02Jc",
-          position: "top-10 right-20",
+          "id": 102,
+          "name": "gameplay-video.com",
+          "icon": "/images/safari.png",
+          "kind": "file",
+          "fileType": "url",
+          "href": "https://youtu.be/mZx57gI02Jc",
+          "position": "top-10 right-20"
         },
         {
-          id: 103,
-          name: "main-menu.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-52 right-80",
-          imageUrl: "/images/main-menu.png",
+          "id": 103,
+          "name": "main-menu.png",
+          "icon": "/images/image.png",
+          "kind": "file",
+          "fileType": "img",
+          "position": "top-52 right-80",
+          "imageUrl": "/images/main-menu.png"
         },
         {
-          id: 104,
-          name: "Gameplay UI.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-60 right-20",
-          imageUrl: "/images/gameplay-av.jpg",
-        },
-      ],
+          "id": 104,
+          "name": "Gameplay UI.png",
+          "icon": "/images/image.png",
+          "kind": "file",
+          "fileType": "img",
+          "position": "top-60 right-20",
+          "imageUrl": "/images/gameplay-av.jpg"
+        }
+      ]
     },
-
-    // ▶ Project 2
     {
-      id: 11,
-      name: "Git Commit Optimizer",
-      icon: "/images/folder.png",
-      kind: "folder",
-      position: "top-52 right-80",
-      windowPosition: "top-[20vh] left-7",
-      children: [
+      "id": 11,
+      "name": "Git Commit Optimizer",
+      "icon": "/images/folder.png",
+      "kind": "folder",
+      "position": "top-52 right-80",
+      "windowPosition": "top-[20vh] left-7",
+      "children": [
         {
-          id: 111,
-          name: "AI Resume Analyzer Project.txt",
-          icon: "/images/txt.png",
-          kind: "file",
-          fileType: "txt",
-          position: "top-5 right-10",
-          description: [
+          "id": 111,
+          "name": "AI Resume Analyzer Project.txt",
+          "icon": "/images/txt.png",
+          "kind": "file",
+          "fileType": "txt",
+          "position": "top-5 right-10",
+          "description": [
             "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
             "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
             "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
-          ],
+            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device."
+          ]
         },
         {
-          id: 112,
-          name: "ai-resume-analyzer.com",
-          icon: "/images/safari.png",
-          kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
-          position: "top-20 left-20",
+          "id": 112,
+          "name": "ai-resume-analyzer.com",
+          "icon": "/images/safari.png",
+          "kind": "file",
+          "fileType": "url",
+          "href": "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
+          "position": "top-20 left-20"
         },
         {
-          id: 113,
-          name: "ai-resume-analyzer.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-52 left-80",
-          imageUrl: "/images/project-2.png",
+          "id": 113,
+          "name": "ai-resume-analyzer.png",
+          "icon": "/images/image.png",
+          "kind": "file",
+          "fileType": "img",
+          "position": "top-52 left-80",
+          "imageUrl": "/images/project-2.png"
         },
         {
-          id: 114,
-          name: "Design.fig",
-          icon: "/images/plain.png",
-          kind: "file",
-          fileType: "fig",
-          href: "https://google.com",
-          position: "top-60 left-5",
-        },
-      ],
+          "id": 114,
+          "name": "Design.fig",
+          "icon": "/images/plain.png",
+          "kind": "file",
+          "fileType": "fig",
+          "href": "https://google.com",
+          "position": "top-60 left-5"
+        }
+      ]
     },
-
-    // ▶ Project 3
     {
-      id: 12,
-      name: "Rubix Rampage",
-      icon: "/images/folder.png",
-      kind: "folder",
-      position: "top-10 left-80",
-      windowPosition: "top-[33vh] left-7",
-      children: [
+      "id": 12,
+      "name": "Rubix Rampage",
+      "icon": "/images/folder.png",
+      "kind": "folder",
+      "position": "top-10 left-80",
+      "windowPosition": "top-[33vh] left-7",
+      "children": [
         {
-          id: 121,
-          name: "Game Details.txt",
-          icon: "/images/txt.png",
-          kind: "file",
-          fileType: "txt",
-          position: "top-5 left-10",
-          description: [
+          "id": 121,
+          "name": "Game Details.txt",
+          "icon": "/images/txt.png",
+          "kind": "file",
+          "fileType": "txt",
+          "position": "top-5 left-10",
+          "description": [
             "PROJECT 1: RUBIX RAMPAGE (Open World Engine)",
             "Rubix Rampage is an ambitious technical showcase—a fully functional open-world action game inspired by the mechanics of GTA Vice City. This wasn't just about building a game; it was about engineering a living, breathing world.",
             "• Core Mechanics: I engineered a robust Third-Person Controller featuring advanced camera logic, responsive shooting mechanics, and arcade-style vehicle physics that feel satisfying to drive.",
             "• AI & Systems: The world is populated by a Professional AI system. NPCs have specific patrol routes and behaviors, reacting dynamically to the player. I also implemented a scalable 'Wanted Level' police system that ramps up difficulty based on player actions.",
-            "• Game Loop: Beyond the sandbox, the game features a structured Mission System complete with cinematic cut-scenes to drive the narrative forward.",
+            "• Game Loop: Beyond the sandbox, the game features a structured Mission System complete with cinematic cut-scenes to drive the narrative forward."
           ]
         },
         {
-          id: 122,
-          name: "gameplay-video.com",
-          icon: "/images/safari.png",
-          kind: "file",
-          fileType: "url",
-          href: "https://youtu.be/K0fmCSgu_UI",
-          position: "top-10 right-20",
+          "id": 122,
+          "name": "gameplay-video.com",
+          "icon": "/images/safari.png",
+          "kind": "file",
+          "fileType": "url",
+          "href": "https://youtu.be/K0fmCSgu_UI",
+          "position": "top-10 right-20"
         },
         {
-          id: 123,
-          name: "Cut Scenes.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-52 right-80",
-          imageUrl: "/images/cutscene.jpg",
+          "id": 123,
+          "name": "Cut Scenes.png",
+          "icon": "/images/image.png",
+          "kind": "file",
+          "fileType": "img",
+          "position": "top-52 right-80",
+          "imageUrl": "/images/cutscene.jpg"
         },
         {
-          id: 124,
-          name: "Gameplay UI.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-60 right-20",
-          imageUrl: "/images/gameplay.jpg",
-        },
-      ],
-    },
-  ],
+          "id": 124,
+          "name": "Gameplay UI.png",
+          "icon": "/images/image.png",
+          "kind": "file",
+          "fileType": "img",
+          "position": "top-60 right-20",
+          "imageUrl": "/images/gameplay.jpg"
+        }
+      ]
+    }
+  ]
 };
 
 const ABOUT_LOCATION = {
-  id: 2,
-  type: "about",
-  name: "About me",
-  icon: "/icons/info.svg",
-  kind: "folder",
-  children: [
+  "id": 2,
+  "type": "about",
+  "name": "About me",
+  "icon": "/icons/info.svg",
+  "kind": "folder",
+  "children": [
     {
-      id: 201,
-      name: "me.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-10 left-5",
-      imageUrl: "/images/itsme.jpg",
+      "id": 201,
+      "name": "me.png",
+      "icon": "/images/image.png",
+      "kind": "file",
+      "fileType": "img",
+      "position": "top-10 left-5",
+      "imageUrl": "/images/itsme.jpg"
     },
     {
-      id: 202,
-      name: "with-gameeon-ceo.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-28 right-72",
-      imageUrl: "/images/gameeon.jpeg",
+      "id": 202,
+      "name": "with-gameeon-ceo.png",
+      "icon": "/images/image.png",
+      "kind": "file",
+      "fileType": "img",
+      "position": "top-28 right-72",
+      "imageUrl": "/images/gameeon.jpeg"
     },
     {
-      id: 203,
-      name: "with-ajay.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-52 left-80",
-      imageUrl: "/images/nodwin.jpeg",
+      "id": 203,
+      "name": "with-ajay.png",
+      "icon": "/images/image.png",
+      "kind": "file",
+      "fileType": "img",
+      "position": "top-52 left-80",
+      "imageUrl": "/images/nodwin.jpeg"
     },
     {
-      id: 204,
-      name: "about-me.txt",
-      icon: "/images/txt.png",
-      kind: "file",
-      fileType: "txt",
-      position: "top-60 left-5",
-      subtitle: "Meet the Developer Behind the Code",
-      image: "/images/main.jpeg",
-      description: [
-        "Hey! I’m Mahendra 👋. I don't just write code; I engineer experiences. I’m a Game Developer at heart and a Full-Stack Architect by trade.",
-        "My playground is Unity and C#, where I craft high-performance multiplayer games. From handling real-time network sync with Photon PUN to optimizing frame rates, I thrive on the complexity of bringing virtual worlds to life.",
-        "Beyond gaming, I’m a heavy hitter in the MERN stack and RAG development. Armed with elite DSA skills and a passion for System Design, I build scalable, intelligent applications that solve hard problems efficiently.",
-        "Currently, I'm driving impact at Accenture as an Associate Software Engineer, bridging the gap between creative game mechanics and robust enterprise software.",
-        "Whether it's optimizing a render loop or architecting a cloud backend, I'm obsessed with performance, precision, and pushing the boundaries of what code can do. Let's build something legendary. 🚀",
-      ],
+      "id": 204,
+      "name": "about-me.txt",
+      "icon": "/images/txt.png",
+      "kind": "file",
+      "fileType": "txt",
+      "position": "top-60 left-5",
+      "subtitle": "Software Analyst, Developer & Content Creator",
+      "image": "/images/main.jpeg",
+      "description": [
+        "I'm Mahendra Gandham, a Software Analyst at Accenture based in Hyderabad, India. I build backend systems and full-stack applications, and create content alongside my engineering work.",
+        "I joined Accenture as an Associate Software Engineer in August 2024 and was promoted to Software Analyst in May 2026. My project work spans PL/SQL, JavaScript, Java, and Python.",
+        "My engineering interests include Java microservices, concurrent data integration, distributed systems, and end-to-end product development.",
+        "I built ScaleWithMahi, a tech interview preparation platform covering Data Structures, Algorithms, and System Design with progress tracking and problem-solving streaks.",
+        "I also build games with Unity and C#, including multiplayer and open-world projects. Explore the Work folder for my software and game-development projects.",
+        "Outside my project work, I create content and share ideas. You can find my creator and professional profiles in Contact."
+      ]
     },
     {
-      id: 205,
-      name: "Game Dev Me.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      href: "https://youtu.be/mZx57gI02Jc",
-      position: "top-10 right-20",
-      imageUrl: "/images/stats.jpeg",
+      "id": 205,
+      "name": "Game Dev Me.png",
+      "icon": "/images/image.png",
+      "kind": "file",
+      "fileType": "img",
+      "href": "https://youtu.be/mZx57gI02Jc",
+      "position": "top-10 right-20",
+      "imageUrl": "/images/stats.jpeg"
     },
-  ],
+    {
+      "id": 206,
+      "name": "Education.txt",
+      "icon": "/images/txt.png",
+      "kind": "file",
+      "fileType": "txt",
+      "subtitle": "Education",
+      "description": [
+        "Vishnu Institute of Technology | Bhimavaram, India",
+        "Bachelor of Technology in Computer Science | 2020 ? 2024",
+        "CGPA: 9.1/10",
+        "Relevant coursework: Data Structures, Algorithms, DBMS, Operating Systems, Object-Oriented Programming, and Computer Networks."
+      ]
+    },
+    {
+      "id": 207,
+      "name": "Achievements.txt",
+      "icon": "/images/txt.png",
+      "kind": "file",
+      "fileType": "txt",
+      "subtitle": "Achievements",
+      "description": [
+        "LeetCode ? Top 5%: Solved 400+ problems, with a focus on Dynamic Programming and Graph Algorithms.",
+        "Hackathon Lead (IGDC Partner): Organized REIMAGINE, a Pan-India game-development hackathon, coordinating logistics for student developers nationwide."
+      ]
+    }
+  ]
 };
 
 const RESUME_LOCATION = {
@@ -495,75 +601,66 @@ const RESUME_LOCATION = {
 };
 
 const EXPERIENCE_LOCATION = {
-  id: 5,
-  type: "experience",
-  name: "Experience",
-  icon: "/icons/work.svg", // Using Briefcase/Work icon
-  kind: "folder",
-  children: [
-    // Sub-folder 1: Previous Company
+  "id": 5,
+  "type": "experience",
+  "name": "Experience",
+  "icon": "/icons/work.svg",
+  "kind": "folder",
+  "children": [
     {
-      id: 50,
-      name: "Accenture",
-      icon: "/images/folder.png",
-      kind: "folder",
-      position: "top-10 left-10",
-      children: [
+      "id": 50,
+      "name": "Accenture",
+      "icon": "/images/folder.png",
+      "kind": "folder",
+      "position": "top-10 left-10",
+      "children": [
         {
-          id: 501,
-          name: "Role & Responsibilities.txt",
-          icon: "/images/txt.png",
-          kind: "file",
-          fileType: "txt",
-          position: "top-5 left-10",
-          description: [
-                "-> Software Engineer | May 2026 - Present",
-                "• Architected a scalable, concurrent Java integration service featuring dynamically configurable thread pools for high-volume data ingestion into Hexagon EAM and DB Pro, automating workflow execution and reducing QA cycle time by 80%.",
-                "• Spearheaded AI-assisted engineering initiatives by developing and deploying custom Copilot Agents, accelerating development lifecycles and boosting team productivity by 40%.",
-                "• Optimized enterprise architecture and backend systems using advanced LLM tooling (Claude Code) to refactor complex backend logic and Extensibility Frameworks, driving a 60% improvement in overall application performance and efficiency.",
-                "   ",
-                "-> Associate Software Engineer | Aug 2024 - May 2026",
-                "• Agile Planning & Execution: Actively contribute to SAFe Program Increment (PI) Planning to define and align on sprint objectives. Utilize Azure DevOps to manage and track assigned tasks and deliverables from onshore teams, ensuring clear communication and timely execution.",
-                "• Backend Automation: Specialize in PL/SQL-based Business Flex Rules to automate backend logic, using triggers to ensure real-time data integrity and improve asset management process efficiency by ~20%.",
-                "• Full-Stack Enhancement: Develop scalable workflows using Ext JS and design custom screens and grids with UDS/Grid Designer to enhance the core functionality of Hexagon EAM, significantly improving user productivity.",
-                "• Awarded 'Best Performer' in first 3 months for adaptability and early delivery.",
-            ]
+          "id": 501,
+          "name": "Software Analyst.txt",
+          "icon": "/images/txt.png",
+          "kind": "file",
+          "fileType": "txt",
+          "subtitle": "Accenture ? Software Analyst",
+          "description": [
+            "May 2026 ? Present | Hyderabad, India",
+            "Promoted to Software Analyst in May 2026 after joining Accenture as an Associate Software Engineer in August 2024.",
+            "Designing a scalable, concurrent Java integration service with dynamically configurable thread pools for high-volume data ingestion into Hexagon EAM and DB Pro.",
+            "The service automates workflow execution and targets an 80% reduction in QA cycle time.",
+            "Project technologies: PL/SQL, JavaScript, Java, and Python."
+          ]
         },
-        // {
-        //   id: 502,
-        //   name: "Party-night.png",
-        //   icon: "/images/image.png",
-        //   kind: "file",
-        //   fileType: "img",
-        //   position: "top-5 left-40",
-        //   imageUrl: "/images/party.jpeg"
-        // },
-        // {
-        //   id: 503,
-        //   name: "Offer_Letter.pdf", 
-        //   icon: "/images/pdf.png",
-        //   kind: "file",
-        //   fileType: "pdf",
-        //   position: "top-32 left-10"
-        // }
+        {
+          "id": 502,
+          "name": "Associate Software Engineer.txt",
+          "icon": "/images/txt.png",
+          "kind": "file",
+          "fileType": "txt",
+          "subtitle": "Accenture ? Associate Software Engineer",
+          "description": [
+            "August 2024 ? May 2026 | Hyderabad, India",
+            "Engineered PL/SQL stored procedures and triggers for critical transactional workflows.",
+            "Optimized multi-table JOIN queries, reducing data-retrieval latency by approximately 40% on large-scale datasets.",
+            "Built JavaScript (Ext JS) UI modules with dynamic field validations for data security and integrity compliance.",
+            "Promoted to Software Analyst in May 2026."
+          ]
+        }
       ]
     },
-    // Sub-folder 2: Another Company / Internship
     {
-      id: 51,
-      name: "Kanine Klans",
-      icon: "/images/folder.png",
-      kind: "folder",
-      position: "top-10 left-48",
-      children: [
+      "id": 51,
+      "name": "Kanine Klans",
+      "icon": "/images/folder.png",
+      "kind": "folder",
+      "position": "top-10 left-48",
+      "children": [
         {
-          id: 511,
-          name: "Internship Details.txt",
-          icon: "/images/txt.png",
-          kind: "file",
-          fileType: "txt",
-          position: "top-5 left-10",
-          description: [
+          "id": 511,
+          "name": "Internship Details.txt",
+          "icon": "/images/txt.png",
+          "kind": "file",
+          "fileType": "txt",
+          "position": "top-5 left-10",
+          "description": [
             "Software Engineer Intern | Aug 2023 - July 2024",
             "• Developed a robust login system for the Kanine Klans game.",
             "• Integrated Blockchain APIs to securely maintain user data and manage the in-game purchase system.",
@@ -572,17 +669,17 @@ const EXPERIENCE_LOCATION = {
           ]
         },
         {
-          id: 512,
-          name: "Work.png",
-          icon: "/images/image.png",
-          kind: "file",
-          fileType: "img",
-          position: "top-5 left-40",
-          imageUrl: "/images/kk.jpeg"
+          "id": 512,
+          "name": "Work.png",
+          "icon": "/images/image.png",
+          "kind": "file",
+          "fileType": "img",
+          "position": "top-5 left-40",
+          "imageUrl": "/images/kk.jpeg"
         }
       ]
     }
-  ],
+  ]
 };
 
 const CERTIFICATIONS_LOCATION = {

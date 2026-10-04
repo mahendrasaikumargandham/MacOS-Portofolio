@@ -3,6 +3,8 @@ import dayjs from "dayjs";
 import { navIcons, navLinks, locations } from '../constants/index';
 import useWindowStore from '../store/window';
 import useLocationStore from '../store/location';
+import AppearanceMenu from './AppearanceMenu';
+import PortfolioMenu from './PortfolioMenu';
 
 const Navbar = () => {
     const [time, setTime] = useState(dayjs().format("ddd MMM D h:mm A"));
@@ -42,7 +44,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed top-0 left-0 w-full h-8 bg-black/20 backdrop-blur-md flex justify-between items-center px-4 z-[9999] text-white shadow-sm font-sf select-none">
+        <nav id="menubar" aria-label="Portfolio menu" className="fixed top-0 left-0 w-full h-8 bg-black/20 backdrop-blur-md flex justify-between items-center px-4 z-[9999] text-white shadow-sm font-sf select-none">
             {/* --- Left Side --- */}
             <div className="flex items-center gap-4">
                 {/* Apple Logo */}
@@ -57,19 +59,19 @@ const Navbar = () => {
                 </div>
 
                 {/* App Name */}
-                <span className="font-bold text-[13px] tracking-wide cursor-default hidden sm:block">
+                <span className="portfolio-brand font-bold text-[13px] tracking-wide cursor-default hidden sm:block">
                     Mahendra's Portfolio
                 </span>
 
                 {/* Clickable Nav Items */}
-                <ul className="flex items-center gap-4 h-full">
-                    {navLinks.map(({ id, name, type }) => (
+                <PortfolioMenu onNavigate={handleNavClick} />
+                <ul className="desktop-navigation flex items-center gap-4 h-full">
+                    {navLinks.map(({ name, type }) => (
                         <li 
-                            key={id} 
-                            onClick={() => handleNavClick(type)}
+                            key={type}
                             className="text-[13px] font-medium hover:bg-white/20 px-2 py-0.5 rounded transition-colors cursor-pointer hidden md:block"
                         >
-                            {name}
+                            <button type="button" onClick={() => handleNavClick(type)}>{name}</button>
                         </li>
                     ))}
                 </ul>
@@ -77,8 +79,8 @@ const Navbar = () => {
 
             {/* --- Right Side --- */}
             <div className="flex items-center gap-4">
-                <ul className="flex items-center gap-3">
-                    {navIcons.map(({ id, img }) => (
+                <ul className="status-icons flex items-center gap-3">
+                    {navIcons.filter(({ img }) => img !== '/icons/mode.svg').map(({ id, img }) => (
                         <li key={id}>
                             <img 
                                 src={img} 
@@ -87,6 +89,7 @@ const Navbar = () => {
                             />
                         </li>
                     ))}
+                    <li><AppearanceMenu /></li>
                 </ul>
                 <time className="text-[13px] font-medium min-w-[120px] text-right cursor-default">
                     {time}

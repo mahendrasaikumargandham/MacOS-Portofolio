@@ -1,45 +1,42 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Navbar, Dock, Welcome, BootScreen, Home } from "./components";
-import { Terminal, Safari, Resume, Finder, Text, Image, Contact, Photos } from "./windows";
-import gsap from "gsap";
-import Draggable from 'gsap/Draggable';
+import { lazy, Suspense, useState } from 'react';
+import { Navbar, Dock, Welcome, BootScreen, Home } from './components';
+import useWindowStore from './store/window';
 
-gsap.registerPlugin(Draggable);
-
-const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  return (
-    <main className="relative w-full h-screen overflow-hidden">
-  
-      {isLoading && <BootScreen onComplete={() => setIsLoading(false)} />}
-
-      <motion.div 
-        className="w-full h-full"
-        initial={{ scale: 1.1, filter: "blur(10px)" }} 
-        animate={{ 
-          scale: isLoading ? 1.1 : 1, 
-          filter: isLoading ? "blur(10px)" : "blur(0px)" 
-        }}
-        transition={{ duration: 0.5, ease: "easeOut" }} 
-      >
-          <Navbar />
-          <Welcome />
-          <Dock />
-          <Terminal />
-          <Safari />
-          <Resume />
-          <Finder />
-          <Text />
-          <Image />
-          <Contact />
-          <Photos />
-          <Home />
-      </motion.div>
-
-    </main>
-  );
+const apps = {
+  terminal: lazy(() => import('./windows/Terminal')),
+  safari: lazy(() => import('./windows/Safari')),
+  resume: lazy(() => import('./windows/Resume')),
+  finder: lazy(() => import('./windows/Finder')),
+  txtfile: lazy(() => import('./windows/Text')),
+  imgfile: lazy(() => import('./windows/Image')),
+  contact: lazy(() => import('./windows/Contact')),
+  photos: lazy(() => import('./windows/Photos')),
 };
 
-export default App;
+const DesktopWindows = () => {
+  const windows = useWindowStore((state) => state.windows);
+  return Object.entries(apps).map(([key, app]) => {
+    const AppWindow = app;
+    return windows[key].isOpen && (
+      <Suspense key={key} fallback={<div className="app-loading" role="status">Opening app…</div>}>
+        <AppWindow />
+      </Suspense>
+    );
+  });
+};
+
+export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  return (
+    <main className="desktop">
+      {isLoading && <BootScreen onComplete={() => setIsLoading(false)} />}
+      <div className="desktop-content" data-ready={!isLoading} inert={isLoading}>
+        <Navbar />
+        <Welcome />
+        <Home />
+        <DesktopWindows />
+        <Dock />
+      </div>
+    </main>
+  );
+}

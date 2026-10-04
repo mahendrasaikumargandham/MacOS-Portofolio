@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import WindowWrapper from '../hoc/WindowWrapper'
 import { WindowControls } from '../components';
 import { Download, AlertCircle, Loader } from 'lucide-react';
@@ -21,21 +21,19 @@ const pdfOptions = {
 };
 
 const Resume = () => {
-    const [numPages, setNumPages] = useState(null);
     const [isError, setIsError] = useState(false);
-
-    // Effect to handle console warnings if you really want to suppress them (Optional)
+    const [pageWidth, setPageWidth] = useState(550);
+    const viewportRef = useRef(null);
     useEffect(() => {
-        const originalWarn = console.warn;
-        console.warn = (...args) => {
-            if (args[0] && args[0].includes('TT: undefined function')) return;
-            originalWarn.apply(console, args);
-        };
-        return () => { console.warn = originalWarn; };
+        const observer = new ResizeObserver(([entry]) => {
+            if (entry.contentRect.width > 0) setPageWidth(Math.min(800, Math.max(180, entry.contentRect.width - 32)));
+        });
+        observer.observe(viewportRef.current);
+        return () => observer.disconnect();
     }, []);
 
-    const onDocumentLoadSuccess = ({ numPages }) => {
-        setNumPages(numPages);
+    const onDocumentLoadSuccess = () => {
+
         setIsError(false);
     };
 
@@ -53,7 +51,7 @@ const Resume = () => {
                 <a 
                     href="/files/MahendraResume.pdf" 
                     download
-                    className='cursor-pointer hover:bg-white/10 p-1.5 rounded transition-colors text-gray-300 hover:text-white'
+                    className='cursor-pointer hover:bg-white/10 p-1.5 rounded transition-colors text-[var(--muted)] hover:text-white'
                     title="Download Resume"
                 >
                     <Download className='icon w-4 h-4' />
@@ -61,11 +59,11 @@ const Resume = () => {
             </div>
 
             {/* Scrollable Container */}
-            <div className="flex-1 overflow-y-auto bg-[#525659] p-4 flex justify-center relative">
+            <div ref={viewportRef} className="resume-viewport flex-1 overflow-auto p-4 relative">
                 
                 {/* 3. FALLBACK UI */}
                 {isError ? (
-                    <div className="flex flex-col items-center justify-center text-gray-300 space-y-4 h-full">
+                    <div className="flex flex-col items-center justify-center text-[var(--muted)] space-y-4 h-full">
                         <AlertCircle size={48} className="text-red-400" />
                         <p>Unable to render PDF preview.</p>
                         <a 
@@ -84,7 +82,7 @@ const Resume = () => {
                         options={pdfOptions}
                         className="shadow-2xl"
                         loading={
-                            <div className="flex flex-col items-center justify-center text-gray-400 mt-20">
+                            <div className="flex flex-col items-center justify-center text-[var(--muted)] mt-20">
                                 <Loader className="animate-spin mb-2" />
                                 <span className="text-xs">Loading Document...</span>
                             </div>
@@ -95,7 +93,7 @@ const Resume = () => {
                             pageNumber={1} 
                             renderAnnotationLayer={false} 
                             renderTextLayer={false} 
-                            width={550}
+                            width={pageWidth}
                             className="bg-white" 
                             error={<div className="text-red-500 text-sm">Page Load Failed</div>}
                         />

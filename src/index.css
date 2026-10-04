@@ -1,6 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
-
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 html,
 body {
@@ -49,8 +48,8 @@ body {
 }
 
 @theme {
-  --font-georama: "Georama", sans-serif;
-  --font-roboto: "Roboto Mono", monospace;
+  --font-georama: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-roboto: "SFMono-Regular", Consolas, monospace;
   --breakpoint-3xl: 1920px;
 }
 
@@ -79,7 +78,7 @@ body {
 
 @layer components {
   .icon {
-    @apply p-1 hover:bg-white/10 rounded hover:cursor-default transition-colors text-gray-300;
+    @apply p-1 hover:bg-white/10 rounded hover:cursor-default transition-colors text-[var(--muted)];
   }
 
   /* --- WELCOME SCREEN --- */
@@ -142,7 +141,7 @@ body {
     }
 
     .dock-tooltip {
-      @apply !py-1 !px-3 !w-fit !text-center !text-xs !rounded-md !bg-[#2d2d2d] !text-white !border !border-white/10 !shadow-xl z-50 max-sm:hidden;
+      @apply !py-1 !px-3 !w-fit !text-center !text-xs !rounded-md !bg-[var(--surface-raised)] !text-white !border !border-white/10 !shadow-xl z-50 max-sm:hidden;
     }
 
     .dock-icon {
@@ -160,44 +159,44 @@ body {
   }
 
   #window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-[#2d2d2d] border-b border-black/50 select-none text-sm text-[#a1a1a1] max-sm:hidden shadow-sm;
+    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-[var(--surface-raised)] border-b border-black/50 select-none text-sm text-[var(--muted)] max-sm:hidden shadow-sm;
   }
 
   /* --- APPS / WINDOWS SCALING --- */
 
   #safari {
-    @apply w-[60rem] h-[35rem] flex flex-col absolute top-40 left-2/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[#e0e0e0];
+    @apply w-[60rem] h-[35rem] flex flex-col absolute top-40 left-2/12 bg-[var(--surface)] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[var(--text)];
 
     .search {
-      @apply flex items-center gap-3 w-2/3 bg-[#3a3a3a] border border-[#555] rounded-lg px-3 py-2 max-sm:w-full shadow-inner;
-      input { @apply placeholder:text-[#888] w-full bg-transparent text-white outline-none; }
+      @apply flex items-center gap-3 w-2/3 bg-[var(--field)] border border-[#555] rounded-lg px-3 py-2 max-sm:w-full shadow-inner;
+      input { @apply placeholder:text-[var(--muted)] w-full bg-transparent text-white outline-none; }
     }
 
     .blog {
-      @apply flex-1 overflow-y-auto bg-[#1e1e1e] p-10 max-w-3xl mx-auto w-full max-sm:p-4;
+      @apply flex-1 overflow-y-auto bg-[var(--surface)] p-10 max-w-3xl mx-auto w-full max-sm:p-4;
       h2 { @apply text-xl font-bold text-pink-500 mb-10; }
       .blog-post {
         @apply grid grid-cols-12 space-x-5 max-sm:flex max-sm:flex-col max-sm:space-x-0 max-sm:gap-4;
         img { @apply size-full rounded-md object-cover max-sm:h-48; }
         .content {
           @apply col-span-10 space-y-3;
-          p { @apply text-xs text-[#a1a1a1]; }
-          h3 { @apply font-semibold text-base text-[#e0e0e0]; }
+          p { @apply text-xs text-[var(--muted)]; }
+          h3 { @apply font-semibold text-base text-[var(--text)]; }
         }
       }
     }
   }
 
   #terminal {
-    @apply w-[36rem] absolute top-32 left-1/12 bg-[#1e1e1e]/95 backdrop-blur-md shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+    @apply w-[36rem] absolute top-32 left-1/12 bg-[var(--surface)] backdrop-blur-md shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
            max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 border border-white/10;
 
-    h2 { @apply font-bold text-sm text-center w-full text-[#a1a1a1]; }
+    h2 { @apply font-bold text-sm text-center w-full text-[var(--muted)]; }
 
     .techstack {
-      @apply text-sm font-roboto p-5 text-[#e0e0e0];
-      .label { @apply flex items-center ms-10 mt-7 max-sm:ms-0 text-[#a1a1a1]; }
+      @apply text-sm font-roboto p-5 text-[var(--text)];
+      .label { @apply flex items-center ms-10 mt-7 max-sm:ms-0 text-[var(--muted)]; }
       .content {
         @apply py-5 my-5 border-y border-dashed border-[#444] space-y-1;
         li {
@@ -214,8 +213,8 @@ body {
   }
 
   #contact {
-    @apply w-[40rem] absolute top-60 left-5/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[#e0e0e0];
+    @apply w-[40rem] absolute top-60 left-5/12 bg-[var(--surface)] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[var(--text)];
 
     h2 { @apply font-bold text-sm text-center w-full; }
     h3 { @apply text-xl font-semibold; }
@@ -223,7 +222,7 @@ body {
     ul {
       @apply flex items-center gap-3 max-sm:flex-col max-sm:gap-6 max-sm:mt-10;
       li {
-        @apply rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300 max-sm:w-full bg-[#2d2d2d] border border-white/5 shadow-lg;
+        @apply rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300 max-sm:w-full bg-[var(--surface-raised)] border border-white/5 shadow-lg;
         a { @apply space-y-5; }
         p { @apply font-semibold text-sm text-white; }
       }
@@ -232,15 +231,15 @@ body {
 
   #photos {
     /* ADDED: h-[35rem] and flex-col to force height and structure */
-    @apply w-[50rem] h-[35rem] flex flex-col absolute top-96 left-1/2 -translate-y-1/2 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:translate-x-0 max-sm:translate-y-0 max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[#e0e0e0];
+    @apply w-[50rem] h-[35rem] flex flex-col absolute top-96 left-1/2 -translate-y-1/2 bg-[var(--surface)] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:translate-x-0 max-sm:translate-y-0 max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[var(--text)];
 
     .sidebar {
       /* ADDED: h-full to stretch the sidebar */
-      @apply w-3/12 h-full flex-none bg-[#2d2d2d]/95 backdrop-blur-xl border-r border-black/50 flex flex-col p-5
+      @apply w-3/12 h-full flex-none bg-[var(--sidebar)] backdrop-blur-xl border-r border-black/50 flex flex-col p-5
              max-sm:w-full max-sm:h-auto max-sm:border-r-0 max-sm:border-b;
 
-      h2 { @apply text-xs font-medium text-[#888] mb-1; }
+      h2 { @apply text-xs font-medium text-[var(--muted)] mb-1; }
       ul {
         @apply max-sm:flex max-sm:gap-4 max-sm:overflow-x-auto;
         li {
@@ -254,7 +253,7 @@ body {
 
     .gallery {
       /* ADDED: flex-1 overflow-y-auto to enable scrolling */
-      @apply p-5 flex-1 overflow-y-auto bg-[#1e1e1e];
+      @apply p-5 flex-1 overflow-y-auto bg-[var(--surface)];
       
       ul {
         @apply grid grid-cols-5 grid-rows-5 gap-2.5 max-sm:grid-cols-2 max-sm:grid-rows-none max-sm:auto-rows-fr;
@@ -272,37 +271,37 @@ body {
   }
 
   #resume {
-    @apply w-[600px] h-[80vh] absolute top-16 left-7/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[#e0e0e0];
+    @apply w-[600px] h-[80vh] absolute top-16 left-7/12 bg-[var(--surface)] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 text-[var(--text)];
     
     #window-header h2 { @apply font-bold text-sm text-center flex-1; }
   }
 
   #finder {
-    @apply w-[48rem] h-[30rem] absolute left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl bg-[#1e1e1e]
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[#e0e0e0];
+    @apply w-[48rem] h-[30rem] absolute left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl bg-[var(--surface)]
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[var(--text)];
     
     @apply max-sm:flex max-sm:flex-col;
 
     .sidebar {
-      @apply w-48 bg-[#2d2d2d]/95 backdrop-blur-xl border-r border-black/50 flex flex-col p-5 space-y-3
+      @apply w-48 bg-[var(--sidebar)] backdrop-blur-xl border-r border-black/50 flex flex-col p-5 space-y-3
              max-sm:w-full max-sm:h-auto max-sm:flex-row max-sm:overflow-x-auto max-sm:border-r-0 max-sm:border-b;
       
-      h3 { @apply text-xs font-medium text-[#888] mb-1 max-sm:hidden; }
+      h3 { @apply text-xs font-medium text-[var(--muted)] mb-1 max-sm:hidden; }
       ul {
         @apply space-y-1 max-sm:flex max-sm:space-y-0 max-sm:gap-2;
         .active { @apply bg-[#0A84FF] text-white; }
-        .not-active { @apply text-[#cccccc] hover:bg-white/10; }
+        .not-active { @apply text-[var(--text)] hover:bg-white/10; }
         li { @apply flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors; }
       }
     }
 
     .content {
-      @apply flex-1 p-8 bg-[#1e1e1e] max-w-2xl relative max-sm:w-full;
+      @apply flex-1 p-8 bg-[var(--surface)] max-w-2xl relative max-sm:w-full;
       li {
         @apply absolute flex items-center flex-col gap-3 max-sm:relative; 
         img { @apply object-contain object-center size-16 relative group-hover:scale-105; }
-        p { @apply text-sm text-center font-medium w-40 text-[#e0e0e0]; }
+        p { @apply text-sm text-center font-medium w-40 text-[var(--text)]; }
       }
       & > ul { @apply max-sm:grid max-sm:grid-cols-3 max-sm:gap-4; }
     }
@@ -312,8 +311,8 @@ body {
   
   #txtfile, #imgfile {
     @apply w-[30rem] h-[30rem] absolute top-36 right-32 
-           bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col
-           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[#e0e0e0];
+           bg-[var(--surface)] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col
+           max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:left-0 max-sm:top-0 max-sm:z-40 text-[var(--text)];
 
     h2 { @apply font-bold text-sm text-center w-full; }
   }
