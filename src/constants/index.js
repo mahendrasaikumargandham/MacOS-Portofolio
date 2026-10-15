@@ -202,6 +202,14 @@ const techStack = [
 
 const socials = [
   {
+    id: 5,
+    text: "Instagram",
+    handle: "@scalewithmahi",
+    icon: "/icons/instagram.svg",
+    bg: "#C13584",
+    link: "https://www.instagram.com/scalewithmahi/",
+  },
+  {
     id: 1,
     text: "Github",
     icon: "/icons/github.svg",
@@ -314,7 +322,7 @@ const WORK_LOCATION = {
           "icon": "/images/txt.png",
           "kind": "file",
           "fileType": "txt",
-          "subtitle": "ScaleWithMahi ? Tech Interview Prep Platform",
+          "subtitle": "ScaleWithMahi — Tech Interview Prep Platform",
           "description": [
             "2026 | Java, Spring Boot, PostgreSQL, Next.js, Firebase, Tailwind CSS",
             "Built a full-stack educational platform for Data Structures, Algorithms, and System Design, with a Java/Spring Boot REST API and PostgreSQL database.",
@@ -383,57 +391,6 @@ const WORK_LOCATION = {
           "fileType": "img",
           "position": "top-60 right-20",
           "imageUrl": "/images/gameplay-av.jpg"
-        }
-      ]
-    },
-    {
-      "id": 11,
-      "name": "Git Commit Optimizer",
-      "icon": "/images/folder.png",
-      "kind": "folder",
-      "position": "top-52 right-80",
-      "windowPosition": "top-[20vh] left-7",
-      "children": [
-        {
-          "id": 111,
-          "name": "AI Resume Analyzer Project.txt",
-          "icon": "/images/txt.png",
-          "kind": "file",
-          "fileType": "txt",
-          "position": "top-5 right-10",
-          "description": [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device."
-          ]
-        },
-        {
-          "id": 112,
-          "name": "ai-resume-analyzer.com",
-          "icon": "/images/safari.png",
-          "kind": "file",
-          "fileType": "url",
-          "href": "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
-          "position": "top-20 left-20"
-        },
-        {
-          "id": 113,
-          "name": "ai-resume-analyzer.png",
-          "icon": "/images/image.png",
-          "kind": "file",
-          "fileType": "img",
-          "position": "top-52 left-80",
-          "imageUrl": "/images/project-2.png"
-        },
-        {
-          "id": 114,
-          "name": "Design.fig",
-          "icon": "/images/plain.png",
-          "kind": "file",
-          "fileType": "fig",
-          "href": "https://google.com",
-          "position": "top-60 left-5"
         }
       ]
     },
@@ -541,7 +498,7 @@ const ABOUT_LOCATION = {
         "My engineering interests include Java microservices, concurrent data integration, distributed systems, and end-to-end product development.",
         "I built ScaleWithMahi, a tech interview preparation platform covering Data Structures, Algorithms, and System Design with progress tracking and problem-solving streaks.",
         "I also build games with Unity and C#, including multiplayer and open-world projects. Explore the Work folder for my software and game-development projects.",
-        "Outside my project work, I create content and share ideas. You can find my creator and professional profiles in Contact."
+        "Outside my project work, I create content and share ideas on Instagram as @scalewithmahi. You can find my creator and professional profiles in Contact."
       ]
     },
     {
@@ -563,7 +520,7 @@ const ABOUT_LOCATION = {
       "subtitle": "Education",
       "description": [
         "Vishnu Institute of Technology | Bhimavaram, India",
-        "Bachelor of Technology in Computer Science | 2020 ? 2024",
+        "Bachelor of Technology in Computer Science | 2020 – 2024",
         "CGPA: 9.1/10",
         "Relevant coursework: Data Structures, Algorithms, DBMS, Operating Systems, Object-Oriented Programming, and Computer Networks."
       ]
@@ -576,7 +533,7 @@ const ABOUT_LOCATION = {
       "fileType": "txt",
       "subtitle": "Achievements",
       "description": [
-        "LeetCode ? Top 5%: Solved 400+ problems, with a focus on Dynamic Programming and Graph Algorithms.",
+        "LeetCode — Top 5%: Solved 400+ problems, with a focus on Dynamic Programming and Graph Algorithms.",
         "Hackathon Lead (IGDC Partner): Organized REIMAGINE, a Pan-India game-development hackathon, coordinating logistics for student developers nationwide."
       ]
     }
@@ -620,9 +577,9 @@ const EXPERIENCE_LOCATION = {
           "icon": "/images/txt.png",
           "kind": "file",
           "fileType": "txt",
-          "subtitle": "Accenture ? Software Analyst",
+          "subtitle": "Accenture · Software Analyst",
           "description": [
-            "May 2026 ? Present | Hyderabad, India",
+            "May 2026 – Present | Hyderabad, India",
             "Promoted to Software Analyst in May 2026 after joining Accenture as an Associate Software Engineer in August 2024.",
             "Designing a scalable, concurrent Java integration service with dynamically configurable thread pools for high-volume data ingestion into Hexagon EAM and DB Pro.",
             "The service automates workflow execution and targets an 80% reduction in QA cycle time.",
@@ -635,9 +592,9 @@ const EXPERIENCE_LOCATION = {
           "icon": "/images/txt.png",
           "kind": "file",
           "fileType": "txt",
-          "subtitle": "Accenture ? Associate Software Engineer",
+          "subtitle": "Accenture · Associate Software Engineer",
           "description": [
-            "August 2024 ? May 2026 | Hyderabad, India",
+            "August 2024 – May 2026 | Hyderabad, India",
             "Engineered PL/SQL stored procedures and triggers for critical transactional workflows.",
             "Optimized multi-table JOIN queries, reducing data-retrieval latency by approximately 40% on large-scale datasets.",
             "Built JavaScript (Ext JS) UI modules with dynamic field validations for data security and integrity compliance.",

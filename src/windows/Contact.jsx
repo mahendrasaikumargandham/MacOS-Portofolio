@@ -17,7 +17,7 @@ const Contact = () => {
             <p>Software Analyst at Accenture, developer, and content creator based in Hyderabad. Let's connect about software, games, or content collaborations.</p>
             <a className="contact-email" href="mailto:mahendragandham730@gmail.com">mahendragandham730@gmail.com</a>
             <ul>
-                {socials.map(({ id, bg, link, icon, text }) => (
+                {socials.map(({ id, bg, link, icon, text, handle }) => (
                     <li key = {id} style = {{ backgroundColor : bg }}>
                         <a
                             href = {link}
@@ -26,7 +26,7 @@ const Contact = () => {
                             title = {text}
                         >
                             <img src = {icon} alt = {text} className='size-5' />
-                            <p>{text}</p>
+                            <p>{text}{handle && <span className="social-handle">{handle}</span>}</p>
                         </a>
                     </li>
                 ))}

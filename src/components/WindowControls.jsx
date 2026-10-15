@@ -20,9 +20,9 @@ const WindowControls = ({ target }) => {
     };
   return (
     <div id = "window-controls">
-      <button type="button" className="close" title="Close" aria-label="Close window" onClick={close} />
-      <button type="button" className="minimize" title="Minimize to Dock" aria-label="Minimize window" onClick={minimize} />
-      <button type="button" className="maximize" title={isMaximized ? 'Restore size' : 'Maximize'} aria-label={isMaximized ? 'Restore window' : 'Maximize window'} aria-pressed={isMaximized} onClick={() => toggleMaximize(target)} />
+      <button type="button" className="close" title="Close" aria-label="Close window" onClick={close}><span className="control-dot" aria-hidden="true" /></button>
+      <button type="button" className="minimize" title="Minimize to Dock" aria-label="Minimize window" onClick={minimize}><span className="control-dot" aria-hidden="true" /></button>
+      <button type="button" className="maximize" title={isMaximized ? 'Restore size' : 'Maximize'} aria-label={isMaximized ? 'Restore window' : 'Maximize window'} aria-pressed={isMaximized} onClick={() => toggleMaximize(target)}><span className="control-dot" aria-hidden="true" /></button>
     </div>
   )
 }

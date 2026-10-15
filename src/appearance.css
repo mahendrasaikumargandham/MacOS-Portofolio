@@ -116,33 +116,34 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 #welcome h1 { margin: 22px 0; font-size: clamp(42px, 6.5vw, 88px); line-height: 1.04; font-weight: 600; letter-spacing: -.065em; text-shadow: 0 6px 40px #0c19392e; }
 #welcome .welcome-subtitle { font-size: 15px; opacity: .86; }
 #welcome .welcome-hint { display: block; margin-top: 30px; font-size: 11px; opacity: .6; }
-.desktop-content[data-ready='true'] #welcome > * { animation: text-arrive 650ms var(--ease-out) both; }
+.desktop-content[data-ready='true'] #welcome > * { animation: text-arrive 480ms var(--ease-out) both; }
 .desktop-content[data-ready='true'] #welcome h1 { animation-delay: 70ms; }
 .desktop-content[data-ready='true'] #welcome .welcome-subtitle { animation-delay: 140ms; }
 .desktop-content[data-ready='true'] #welcome .welcome-hint { animation-delay: 210ms; }
-@keyframes text-arrive { from { opacity: 0; transform: translateY(12px); } }
+@keyframes text-arrive { from { opacity: 0; transform: translateY(6px); } }
 .appearance-panel { animation: panel-arrive 180ms var(--ease-out); transform-origin: top right; }
 @keyframes panel-arrive { from { opacity: 0; scale: .97; } }
 #home { padding: 24px; }
+#home[data-dragging='true'] { z-index: 2; }
 #home ul { height: 100%; }
 #home ul li { border-radius: 12px; padding: 8px 4px; }
 #home ul li:hover { background: #ffffff15; }
 
 #dock { bottom: 16px; }
 #dock .dock-container {
-  width: auto; height: 76px; min-height: 76px; max-height: 76px;
-  gap: 12px; padding: 10px 14px 5px; align-items: center;
-  border-radius: 25px; background: var(--glass);
+  width: auto; height: 66px; min-height: 66px; max-height: 66px;
+  gap: 9px; padding: 8px 12px 4px; align-items: center;
+  border-radius: 22px; background: var(--glass);
   border: 1px solid var(--highlight);
   box-shadow: 0 12px 36px #0003, inset 0 1px 0 var(--highlight);
   backdrop-filter: blur(20px);
 }
-.dock-item { position: relative; width: 48px; height: 60px; flex-shrink: 0; }
+.dock-item { position: relative; width: 42px; height: 54px; flex-shrink: 0; }
 .dock-separated { margin-left: 10px; }
-.dock-separated::before { content: ''; position: absolute; left: -12px; top: 4px; height: 44px; width: 1px; background: var(--line); }
-#dock .dock-icon { position: relative; display: block; width: 48px; height: 48px; border-radius: 13px; transform-origin: center bottom; transition: transform 160ms ease; }
+.dock-separated::before { content: ''; position: absolute; left: -10px; top: 4px; height: 38px; width: 1px; background: var(--line); }
+#dock .dock-icon { position: relative; display: block; width: 42px; height: 42px; border-radius: 12px; transform-origin: center bottom; transition: transform 160ms ease; }
 #dock .dock-icon img { object-fit: contain; border-radius: 12px; }
-#dock .dock-icon:hover, #dock .dock-icon:focus-visible { transform: translateY(-7px) scale(1.16); }
+#dock .dock-icon:hover, #dock .dock-icon:focus-visible { transform: translateY(-4px) scale(1.08); }
 .dock-label { position: absolute; bottom: calc(100% + 14px); left: 50%; transform: translateX(-50%); padding: 5px 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 7px; font-size: 11px; white-space: nowrap; visibility: hidden; box-shadow: 0 4px 12px #0002; }
 .dock-icon:hover .dock-label, .dock-icon:focus-visible .dock-label { visibility: visible; }
 .dock-indicator { display: block; width: 4px; height: 4px; margin: 5px auto 0; border-radius: 50%; background: var(--text); opacity: 0; }
@@ -155,8 +156,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   border: 1px solid var(--highlight); border-radius: 22px;
   background: var(--window-glass); color: var(--text);
   box-shadow: var(--shadow), inset 0 1px 0 var(--highlight); filter: none;
-  backdrop-filter: blur(18px) saturate(1.25);
-  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
   overflow: auto; animation: window-appear 240ms var(--ease-out);
 }
 #safari { --window-width: 60rem; }
@@ -172,7 +173,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .desktop .app-window[data-active='false'] { box-shadow: var(--inactive-shadow); }
 .app-window[data-active='false'] #window-header { color: var(--muted); }
 .app-window[data-active='false'] #window-header h2 { color: var(--muted); }
-.app-window[data-active='false'] #window-controls button { background: var(--muted); opacity: .4; }
+.app-window[data-active='false'] #window-controls .control-dot { background: var(--muted); opacity: .4; }
 .desktop #photos { transform: none; }
 @keyframes window-appear { from { opacity: 0; } to { opacity: 1; } }
 .app-window #window-header {
@@ -183,15 +184,20 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   backdrop-filter: none;
 }
 .app-window #window-header h2 { color: var(--text); font-size: 13px; font-weight: 600; letter-spacing: -.015em; }
-#window-controls { display: flex; flex-shrink: 0; gap: 8px; }
-#window-controls > button { position: relative; width: 12px; height: 12px; padding: 0; box-shadow: inset 0 0 0 .5px #0002; }
-#window-controls .close::before, #window-controls .close::after { content: ''; position: absolute; top: 5px; left: 2px; width: 6px; height: 1px; background: #650b08; opacity: 0; transform: rotate(45deg); }
-#window-controls .close::after { transform: rotate(-45deg); }
-#window-controls:hover .close::before, #window-controls:hover .close::after, #window-controls .close:focus-visible::before, #window-controls .close:focus-visible::after { opacity: 1; }
+#window-controls { display: flex; flex-shrink: 0; gap: 0; margin: -6px; }
+#window-controls > button { position: relative; display: grid; place-items: center; width: 24px; height: 36px; padding: 0; border: 0; border-radius: 8px; background: transparent; box-shadow: none; }
+#window-controls > button:hover { background: var(--field); }
+#window-controls .control-dot { position: relative; width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 .5px #0002; pointer-events: none; }
+#window-controls .close .control-dot { background: #ff5f57; }
+#window-controls .minimize .control-dot { background: #febc2e; }
+#window-controls .maximize .control-dot { background: #28c840; }
+#window-controls .close .control-dot::before, #window-controls .close .control-dot::after { content: ''; position: absolute; top: 5px; left: 2px; width: 6px; height: 1px; background: #650b08; opacity: 0; transform: rotate(45deg); }
+#window-controls .close .control-dot::after { transform: rotate(-45deg); }
+#window-controls:hover .close .control-dot::before, #window-controls:hover .close .control-dot::after, #window-controls .close:focus-visible .control-dot::before, #window-controls .close:focus-visible .control-dot::after { opacity: 1; }
 #window-controls > button:disabled { cursor: default; }
-#window-controls .minimize::after { content: ''; position: absolute; width: 6px; height: 1px; top: 5px; left: 2px; background: #6d4604; opacity: 0; }
-#window-controls .maximize::after { content: ''; position: absolute; width: 5px; height: 5px; top: 3px; left: 3px; border: 1px solid #075c13; opacity: 0; }
-#window-controls:hover .minimize::after, #window-controls:hover .maximize::after, #window-controls button:focus-visible::after { opacity: 1; }
+#window-controls .minimize .control-dot::after { content: ''; position: absolute; width: 6px; height: 1px; top: 5px; left: 2px; background: #6d4604; opacity: 0; }
+#window-controls .maximize .control-dot::after { content: ''; position: absolute; width: 5px; height: 5px; top: 3px; left: 3px; border: 1px solid #075c13; opacity: 0; }
+#window-controls:hover .minimize .control-dot::after, #window-controls:hover .maximize .control-dot::after, #window-controls button:focus-visible .control-dot::after { opacity: 1; }
 .app-window .sidebar { background: var(--panel-tint); backdrop-filter: none; border-color: var(--line); }
 #finder .sidebar, #photos .sidebar { margin: 8px; height: calc(100% - 16px); border: 1px solid var(--highlight); border-radius: 16px; box-shadow: 0 2px 8px #00000008; }
 #finder .sidebar { width: 188px; padding: 12px 8px; }
@@ -227,6 +233,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
 #contact ul li img { filter: brightness(0); }
 :root[data-theme='dark'] #contact ul li img { filter: brightness(0) invert(1); }
 #contact ul li p { font-size: 12px; }
+#contact .social-handle { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; overflow-wrap: anywhere; }
 #contact ul li a { padding: 8px; }
 #terminal .techstack { font-size: 12px; overflow: auto; }
 #terminal .techstack .content li ul { flex-wrap: wrap; }
@@ -272,7 +279,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-vis
   #home ul li.folder { width: auto; min-width: 0; }
   #home ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
   #home ul li p { font-size: 11px; }
-  #dock .dock-container { gap: 6px; padding-inline: 10px; height: 68px; min-height: 68px; max-height: 68px; border-radius: 22px; }
+  #dock .dock-container { gap: 6px; padding-inline: 8px; height: 60px; min-height: 60px; max-height: 60px; border-radius: 20px; }
   .dock-item { width: 38px; height: 50px; }
   #dock .dock-icon { width: 38px; height: 38px; }
   .dock-separated { margin-left: 6px; }
