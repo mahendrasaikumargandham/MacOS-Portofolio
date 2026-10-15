@@ -93,6 +93,31 @@
 @media (min-width: 640px) and (max-height: 720px) {
   #welcome { top: 12px; bottom: 8px; translate: -50% 0; overflow: auto; padding-top: 28px; }
 }
+@media (min-width: 640px) and (max-width: 1366px) {
+  #welcome { gap: 18px; }
+  .compact-intro { padding: 18px; }
+  #welcome h1 { font-size: clamp(30px, 3vw, 40px); margin: 8px 0 16px; }
+  .intro-prefix { font-size: 16px; margin-bottom: 4px; }
+  .local-greeting { font-size: 15px; margin-bottom: 8px; }
+  #welcome .welcome-subtitle { font-size: 14px; line-height: 1.55; }
+  #welcome .hero-actions { margin-top: 16px; gap: 10px; }
+  .hero-actions .hero-primary { padding: 10px 14px; }
+  .featured-preview { padding: 30px 34px 14px 12px; }
+  .featured-details { padding: 12px; }
+  .featured-details h2 { font-size: 17px; }
+  .featured-details > a { margin-top: 6px; }
+  .widget-caption { padding: 10px 12px; }
+  .widget-photo { min-height: 76px; }
+  .project-widgets { gap: 12px; }
+}
+@media (min-width: 640px) and (max-width: 1050px) {
+  #welcome { align-content: start; padding-top: 10px; }
+  .compact-intro { display: grid; grid-template-columns: 1.1fr 1fr; column-gap: 20px; align-items: center; }
+  .local-greeting { grid-column: 1 / -1; }
+  #welcome h1 { grid-column: 1; grid-row: 2 / 4; margin: 0; }
+  #welcome .welcome-subtitle { grid-column: 2; }
+  #welcome .hero-actions { grid-column: 2; margin-top: 10px; }
+}
 @media (max-width: 639px) {
   #welcome { display: block; position: absolute; inset: 130px 12px 0; width: auto; height: auto; transform: none; translate: none; overflow: auto; padding: 12px 8px 24px; }
   #welcome h1 { font-size: 44px; margin: 16px 0; }
