@@ -54,6 +54,7 @@ export default function Welcome() {
         </a>
         <div className="featured-details">
           <div><h2>ScaleWithMahi<span>MAIN PROJECT</span></h2><p>DSA. Java. System design. One place to grow.</p></div>
+          <p className="project-users">100+ users</p>
           <a href="https://scalewithmahi.com/" target="_blank" rel="noopener noreferrer">Visit website <ArrowUpRight size={14} /></a>
         </div>
       </article>

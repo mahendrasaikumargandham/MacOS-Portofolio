@@ -1,12 +1,14 @@
 import { create } from 'zustand';
 
 const storageKey = 'portfolio-appearance';
+const mobileMedia = window.matchMedia('(max-width: 639px)');
+const activeKey = () => mobileMedia.matches ? 'portfolio-mobile-appearance' : storageKey;
 const validTheme = (value) => ['light', 'dark', 'system'].includes(value) ? value : 'system';
 const readTheme = () => {
   try {
-    return validTheme(localStorage.getItem(storageKey));
+    return validTheme(localStorage.getItem(activeKey()) || (mobileMedia.matches ? 'light' : 'system'));
   } catch {
-    return 'system';
+    return mobileMedia.matches ? 'light' : 'system';
   }
 };
 
@@ -22,7 +24,7 @@ const useAppearanceStore = create((set) => ({
     applyTheme(theme);
     set({ theme });
     try {
-      localStorage.setItem(storageKey, theme);
+      localStorage.setItem(activeKey(), theme);
     } catch {
       // The selection still works when browser storage is unavailable.
     }
@@ -33,16 +35,23 @@ export function initializeAppearance() {
   const media = window.matchMedia('(prefers-color-scheme: dark)');
   const syncSystem = () => applyTheme(useAppearanceStore.getState().theme);
   const syncStorage = (event) => {
-    if (event.key !== storageKey && event.key !== null) return;
+    if (event.key !== activeKey() && event.key !== null) return;
+    const theme = readTheme();
+    useAppearanceStore.setState({ theme });
+    applyTheme(theme);
+  };
+  const syncDevice = () => {
     const theme = readTheme();
     useAppearanceStore.setState({ theme });
     applyTheme(theme);
   };
   syncSystem();
   media.addEventListener('change', syncSystem);
+  mobileMedia.addEventListener('change', syncDevice);
   window.addEventListener('storage', syncStorage);
   return () => {
     media.removeEventListener('change', syncSystem);
+    mobileMedia.removeEventListener('change', syncDevice);
     window.removeEventListener('storage', syncStorage);
   };
 }

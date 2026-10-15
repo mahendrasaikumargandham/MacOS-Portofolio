@@ -1,0 +1,40 @@
+.file-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); flex-shrink: 0; }
+.file-toolbar > p { font-size: 12px; line-height: 1.5; color: var(--muted); }
+.view-switcher { display: flex; padding: 3px; background: var(--field); border: 1px solid var(--line); border-radius: 12px; flex-shrink: 0; }
+.view-switcher button { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 9px; color: var(--muted); }
+.view-switcher button[aria-pressed='true'] { color: var(--accent); background: var(--surface-raised); }
+.file-icon { display: grid; place-items: center; width: 48px; height: 48px; color: #3497ed; flex-shrink: 0; }
+.file-icon > svg { width: 38px; height: 38px; stroke-width: 1.3; }
+.file-icon.is-folder > svg { fill: #5eb7fa; stroke: #3497ed; }
+.file-icon > img { width: 44px; height: 44px; object-fit: cover; border-radius: 7px; border: 1px solid var(--line); }
+#finder .sidebar .file-icon { width: 18px; height: 18px; }
+#finder .sidebar .file-icon svg { width: 18px; height: 18px; }
+.file-label { min-width: 0; }
+.file-label small { display: block; font-size: 11px; line-height: 1.5; color: var(--muted); margin-top: 4px; }
+#finder .content[data-view='grid'] .file-label { text-align: center; }
+#finder .content[data-view='grid'] .file-label small { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+#finder .content[data-view='list'] { display: flex; flex-direction: column; gap: 0; padding: 8px 16px; }
+#finder .content[data-view='list'] > li { display: flex; flex-direction: row; align-items: center; min-height: 68px; padding: 10px 0; border-radius: 0; border-bottom: 1px solid var(--line); flex-shrink: 0; }
+#finder .content[data-view='list'] .file-label p { text-align: left; padding: 0; font-size: 14px; }
+.photo-browser { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.photo-albums { display: flex; gap: 4px; }
+.photo-albums button { padding: 10px 12px; border-radius: 10px; font-size: 12px; color: var(--muted); }
+.photo-albums button[aria-pressed='true'] { background: var(--accent-line); color: var(--text); }
+.photo-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); align-content: start; gap: 14px; padding: 16px; overflow: auto; flex: 1; min-height: 0; }
+.photo-result { min-width: 0; text-align: left; padding: 8px; border-radius: 12px; background: var(--field); }
+.photo-result > img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; }
+.photo-result > span { display: block; font-size: 12px; padding-top: 8px; overflow-wrap: anywhere; }
+.photo-result small { display: block; color: var(--muted); margin-top: 4px; }
+.photo-results[data-view='list'] { display: flex; flex-direction: column; gap: 6px; }
+.photo-results[data-view='list'] .photo-result { display: flex; gap: 12px; align-items: center; }
+.photo-results[data-view='list'] .photo-result img { width: 56px; height: 56px; flex-shrink: 0; }
+.photo-empty { color: var(--muted); padding: 24px; }
+.featured-details .project-users { color: var(--accent); font-size: 12px; font-weight: 600; margin-top: 10px; }
+@media (max-width: 639px) {
+  .view-switcher button { width: 44px; height: 44px; }
+  .file-toolbar { padding: 8px 12px; gap: 8px; }
+  .photo-albums { flex-wrap: wrap; }
+  .photo-albums button { min-height: 44px; padding: 8px; }
+  .photo-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #finder .content[data-view='list'] .file-label small { font-size: 12px; }
+}

@@ -6,11 +6,15 @@ import { locations } from '../constants'
 import useLocationStore from '../store/location'
 import clsx from 'clsx'
 import useWindowStore from '../store/window'
+import ViewSwitcher from '../components/ViewSwitcher';
+import { useFileView } from '../store/useFileView';
+import FileIcon from '../components/FileIcon';
 
 const Finder = () => {
     const { openWindow } = useWindowStore();
     const { activeLocation, setActiveLocation } = useLocationStore();
     const [query, setQuery] = useState('');
+    const [view, setView] = useFileView();
     const items = (activeLocation?.children || []).filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
     const navigate = (location) => {
         setQuery('');
@@ -41,7 +45,7 @@ const Finder = () => {
                             item.id === activeLocation?.id ? 'bg-[#0A84FF] text-white' : 'hover:bg-black/5 dark:hover:bg-white/10 text-gray-700 dark:text-[var(--muted)]'
                         )}
                     >
-                        <img src={item.icon} className='w-4 h-4 object-contain' alt={item.name} /> 
+                        <FileIcon item={item} />
                         <p className={clsx('text-sm font-medium truncate', item.id === activeLocation?.id ? 'text-white' : '')}>{item.name}</p>
                     </li>
                 ))}
@@ -63,7 +67,7 @@ const Finder = () => {
                 </label>
             </div>
 
-            {/* Changed h-full to flex-1 min-h-0. This forces the div to take only remaining space and scroll internally. */}
+            <div className="file-toolbar"><p>{activeLocation?.summary}</p><ViewSwitcher view={view} onChange={setView} /></div>
             <div className='finder-body flex-1 min-h-0 bg-[var(--surface)] flex text-[var(--text)]'>
                 <div className='sidebar w-48 bg-[var(--sidebar)] backdrop-blur-xl border-r border-black/50 flex flex-col p-3 pt-4 overflow-y-auto h-full'>
                     {/* 1. Favorites (Main Folders) */}
@@ -78,7 +82,7 @@ const Finder = () => {
                     {locations.certifications?.children && renderList("Certifications", locations.certifications.children)}
                 </div>
 
-                <ul className='content flex-1 p-8 grid grid-cols-4 gap-4 content-start overflow-y-auto h-full'>
+                <ul data-view={view} className='content flex-1 p-8 grid grid-cols-4 gap-4 content-start overflow-y-auto h-full'>
                     {items.map((item) => (
                         <li 
                             key={item.id} 
@@ -90,10 +94,8 @@ const Finder = () => {
                             role="button" tabIndex={0}
                             onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openItem(item); } }}
                         >
-                            <img src={item.icon} alt={item.name} className='w-14 h-14 object-contain drop-shadow-md' />
-                            <p className='text-sm text-center font-medium w-32 break-words leading-tight px-1 rounded bg-transparent'>
-                                {item.name}
-                            </p>
+                            <FileIcon item={item} />
+                            <div className="file-label"><p>{item.name}</p><small>{item.summary || (item.kind === 'folder' ? `${item.children?.length || 0} items` : item.fileType === 'img' ? 'Image' : item.fileType === 'url' ? 'Website' : 'Document')}</small></div>
                         </li>
                     ))}
                     {items.length === 0 && <li className="finder-empty">{query ? 'No matching files' : 'This folder is empty'}</li>}

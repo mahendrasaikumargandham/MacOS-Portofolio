@@ -325,6 +325,7 @@ const WORK_LOCATION = {
           "subtitle": "ScaleWithMahi — Tech Interview Prep Platform",
           "description": [
             "2026 | Java, Spring Boot, PostgreSQL, Next.js, Firebase, Tailwind CSS",
+            "Serving 100+ users with learning paths for DSA, Java, and system design.",
             "Built a full-stack educational platform for Data Structures, Algorithms, and System Design, with a Java/Spring Boot REST API and PostgreSQL database.",
             "Developed a gamification engine that tracks problem-solving streaks and daily activity, powering a GitHub-style consistency grid.",
             "Integrated Firebase Authentication with Spring Security and stateless JWT validation to secure API routes and manage user sessions.",
@@ -338,7 +339,9 @@ const WORK_LOCATION = {
           "kind": "file",
           "fileType": "url",
           "href": "https://scalewithmahi.com/"
-        }
+        },
+        { id: 133, name: 'Desktop homepage.jpg', kind: 'file', fileType: 'img', icon: '/images/image.png', imageUrl: '/images/scalewithmahi-desktop.jpg' },
+        { id: 134, name: 'Mobile homepage.jpg', kind: 'file', fileType: 'img', icon: '/images/image.png', imageUrl: '/images/scalewithmahi-mobile.jpg' }
       ]
     },
     {
@@ -772,6 +775,41 @@ export const locations = {
   certifications: CERTIFICATIONS_LOCATION,
   trash: TRASH_LOCATION,
 };
+
+WORK_LOCATION.children.push({
+  id: 14, name: 'macOS & iOS Portfolio', kind: 'folder', icon: '/images/folder.png',
+  children: [
+    { id: 141, name: 'About this portfolio.txt', kind: 'file', fileType: 'txt', icon: '/images/txt.png', subtitle: 'A desktop-inspired portfolio, built for every screen', description: [
+      'An interactive React portfolio with a macOS-inspired desktop and an iOS-inspired mobile interface.',
+      'Built with Vite, React, Zustand, GSAP, and CSS. Includes draggable windows, theme controls, project previews, and a file browser.',
+      'Responsive layouts, keyboard navigation, and reduced-motion preferences make the experience adaptable across devices.',
+      'Hosted on Vercel at mahendragandham.dev.'
+    ] },
+    { id: 142, name: 'Visit portfolio', kind: 'file', fileType: 'url', icon: '/images/safari.png', href: 'https://mahendragandham.dev/' }
+  ]
+});
+const folderSummaries = {
+  1: 'Software platforms, multiplayer games, and interactive web experiences.',
+  2: 'My background, education, achievements, and creative interests.',
+  3: 'My latest resume, ready to view or download.',
+  4: 'Archived images and earlier experiments.',
+  5: 'Engineering roles, responsibilities, and project contributions.',
+  6: 'Credentials in cloud administration, agile delivery, and game development.',
+  10: 'A Unity multiplayer shooter with Photon networking and Firebase integration.',
+  12: 'An open-world Unity game with missions, AI, and interactive environments.',
+  13: 'Interview preparation for DSA, Java, and system design. 100+ users.',
+  14: 'A React portfolio combining a macOS desktop with an iOS-style mobile experience.',
+  50: 'PL/SQL, JavaScript, Java, and Python engineering at Accenture since August 2024.',
+  51: 'Game systems, authentication, and backend integrations during my engineering internship.',
+  60: 'Microsoft Azure Administrator Associate credential and verification.',
+  61: 'SAFe 6 Practitioner certification and verification.',
+  62: 'Gaming and esports training with Hero Vired and Nodwin Gaming.'
+};
+const describeFolders = (folder) => {
+  folder.summary = folderSummaries[folder.id] || `Explore ${folder.name}.`;
+  folder.children?.filter((item) => item.kind === 'folder').forEach(describeFolders);
+};
+Object.values(locations).forEach(describeFolders);
 
 const INITIAL_Z_INDEX = 1000;
 

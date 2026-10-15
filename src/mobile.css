@@ -82,6 +82,7 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
   .desktop:has(.app-window:not([hidden])) #dock { display: none; }
+  .desktop:has(.app-window:not([hidden])) .home-screen { visibility: hidden; }
   .app-window #window-header { min-height: 56px; padding: 6px 12px; gap: 8px; background: var(--mobile-glass); border-bottom: 1px solid var(--mobile-glass-edge); backdrop-filter: blur(18px) saturate(1.35); -webkit-backdrop-filter: blur(18px) saturate(1.35); }
   #window-controls { margin: 0; }
   #window-controls > .minimize, #window-controls > .maximize, #window-controls .control-dot { display: none; }
