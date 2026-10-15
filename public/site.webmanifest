@@ -1,0 +1,15 @@
+{
+  "name": "Mahendra Gandham | Portfolio",
+  "short_name": "Mahendra",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "icons": [
+    {
+      "src": "/images/mahendra-profile.jpeg",
+      "sizes": "1254x1254",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
