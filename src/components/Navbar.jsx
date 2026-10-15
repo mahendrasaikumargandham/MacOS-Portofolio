@@ -7,13 +7,13 @@ import AppearanceMenu from './AppearanceMenu';
 import PortfolioMenu from './PortfolioMenu';
 
 const Navbar = () => {
-    const [time, setTime] = useState(dayjs().format("ddd MMM D h:mm A"));
+    const [time, setTime] = useState(() => dayjs());
     const { openWindow } = useWindowStore();
     const { setActiveLocation } = useLocationStore();
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTime(dayjs().format("ddd MMM D h:mm A"));
+            setTime(dayjs());
         }, 60000);
         return () => clearInterval(interval);
     }, []);
@@ -45,6 +45,7 @@ const Navbar = () => {
 
     return (
         <nav id="menubar" aria-label="Portfolio menu" className="fixed top-0 left-0 w-full h-8 bg-black/20 backdrop-blur-md flex justify-between items-center px-4 z-[9999] text-white shadow-sm font-sf select-none">
+            <time className="mobile-time">{time.format('h:mm')}</time>
             {/* --- Left Side --- */}
             <div className="flex items-center gap-4">
                 {/* Apple Logo */}
@@ -92,7 +93,7 @@ const Navbar = () => {
                     <li><AppearanceMenu /></li>
                 </ul>
                 <time className="text-[13px] font-medium min-w-[120px] text-right cursor-default">
-                    {time}
+                    {time.format('ddd MMM D h:mm A')}
                 </time>
             </div>
         </nav>

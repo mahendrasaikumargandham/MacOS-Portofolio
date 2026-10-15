@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState } from 'react';
 import { Navbar, Dock, Welcome, BootScreen, Home } from './components';
 import useWindowStore from './store/window';
+import MobileApps from './components/MobileApps';
 
 const apps = {
   terminal: lazy(() => import('./windows/Terminal')),
@@ -32,8 +33,11 @@ export default function App() {
       {isLoading && <BootScreen onComplete={() => setIsLoading(false)} />}
       <div className="desktop-content" data-ready={!isLoading} inert={isLoading}>
         <Navbar />
-        <Welcome />
-        <Home />
+        <div className="home-screen">
+          <MobileApps />
+          <Welcome />
+          <Home />
+        </div>
         <DesktopWindows />
         <Dock />
       </div>

@@ -4,6 +4,7 @@ import './index.css'
 import './appearance.css'
 import './gaming.css'
 import './dashboard.css'
+import './mobile.css'
 import App from './App.jsx'
 import { initializeAppearance } from './store/appearance'
 

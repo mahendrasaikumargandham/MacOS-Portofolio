@@ -58,7 +58,7 @@ const WindowWrapper = (Component, windowKey) => {
         role="region" aria-label={windowKey + ' window'}
         onPointerDown={() => focusWindow(windowKey)}
         onDoubleClick={(event) => {
-          if (event.target.closest('#window-header') && !event.target.closest('button, input, a')) toggleMaximize(windowKey);
+          if (window.matchMedia('(min-width: 640px)').matches && event.target.closest('#window-header') && !event.target.closest('button, input, a')) toggleMaximize(windowKey);
         }}
         onFocusCapture={() => focusWindow(windowKey)}>
         <div className="window-content"><Component {...props} /></div>

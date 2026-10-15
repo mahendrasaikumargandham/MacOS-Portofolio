@@ -23,7 +23,7 @@ export default function Dock() {
     <nav id="dock" aria-label="Applications">
       <div className="dock-container">
         {dockApps.map((app) => (
-          <div className={'dock-item ' + (app.id === 'trash' ? 'dock-separated' : '')} key={app.id}>
+          <div className={'dock-item ' + (app.id === 'trash' ? 'dock-separated' : '')} data-app={app.id} key={app.id}>
             <button type="button" className="dock-icon" aria-label={app.name}
               data-window-key={app.id} title={windows[app.id]?.isMinimized ? `Restore ${app.name}` : app.name}
               disabled={!app.canOpen} onClick={() => openApp(app)}>
